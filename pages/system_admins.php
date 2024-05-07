@@ -26,13 +26,13 @@ include '../config/config.php';
 
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
-            <img class="animation__wobble" src="../assets/images/logo/osca_logo2.png" alt="AdminLTELogo" height="100"
+            <img class="animation__wobble" src="../assets/img/yourdevlogo.png" alt="AdminLTELogo" height="100"
                 width="100">
         </div>
 
-        <!-- Content Wrapper. Contains page content -->
+
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
+
             <div class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
@@ -43,24 +43,19 @@ include '../config/config.php';
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                                 <li class="breadcrumb-item font-italic active">System</li>
-                                <li class="breadcrumb-item active">System Admins</li>
+                                <li class="breadcrumb-item active">Administrators</li>
                             </ol>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <!-- /.content-header -->
 
-            <!-- Main content -->
             <section class="content">
-                <!-- container-fluid -->
                 <div class="container-fluid">
-                    <!-- main rows -->
 
                     <div class="row">
-                        <div class="col">
 
-                            <!-- card -->
+                        <div class="col">
                             <div class="card card-primary card-secondary">
 
                                 <div class="card-body">
@@ -68,10 +63,10 @@ include '../config/config.php';
                                         <thead>
                                             <tr>
                                                 <th>Admin ID</th>
-                                                <th>Profile</th>
-                                                <th>Username</th>
                                                 <th>Name</th>
                                                 <th>Type</th>
+                                                <th>Username</th>
+                                                <th>Active Status</th>
                                                 <th>Time Added</th>
                                                 <th class="text-nowrap w-auto text-center">Actions</th>
                                             </tr>
