@@ -4,7 +4,7 @@ function getDatabase() {
     $dbHost = 'localhost';
     $dbUsername = 'root';
     $dbPassword = '';
-    $dbName = 'u907822938_eoscadb';
+    $dbName = 'test-projectdb';
     $connection = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
     if (!$connection) {
         die("Can't connect to the database server. Error: " . mysqli_connect_error());
