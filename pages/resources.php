@@ -38,3 +38,5 @@
 <!-- DataTables(Latest Version for all Datatables Plugins) -->
 <link href="../assets/plugins/DataTables/datatables.min.css" rel="stylesheet">
 <script src="../assets/plugins/DataTables/datatables.min.js"></script>
+
+<link rel="stylesheet" href="../assets/css/main.css">
