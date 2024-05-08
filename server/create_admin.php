@@ -47,8 +47,5 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
   $response['message'] = 'An error occurred while preparing Query: ' . $db->error;
   http_response_code(500); // Server Error
 }
-} else {
-    $response['message'] = 'Error fetching admin ID: ' . mysqli_error(getDatabase());
-  }
 echo json_encode($response);
 ?>
