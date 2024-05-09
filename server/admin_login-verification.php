@@ -23,7 +23,6 @@ if ($adminSelectQuery = $db->prepare("SELECT `username`, `type_id` FROM system_a
 } else {
     echo "An error occurred while preparing Query: " . $db->error;
     http_response_code(500); // Server Error
-
 }
 
 ?>
