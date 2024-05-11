@@ -1,10 +1,14 @@
 <script src="../assets/plugins/jquery/jquery_v3.7.1.js"></script>
 <link href="../assets/img/yourdevlogo.png" rel="icon">
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+    
 <link rel="stylesheet" href="../assets/plugins/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 <script src="../assets/plugins/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 

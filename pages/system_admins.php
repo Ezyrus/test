@@ -55,11 +55,12 @@ include '../config/config.php';
                                             <thead>
                                                 <tr>
                                                     <th>Admin ID</th>
-                                                    <th>Name</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
                                                     <th>Type</th>
                                                     <th>Username</th>
                                                     <th>Active</th>
-                                                    <th>Added by</th>
+                                                    <th>Added By</th>
                                                     <th>Date Registered</th>
                                                     <th class="text-nowrap w-auto text-center">Actions</th>
                                                 </tr>
@@ -77,6 +78,9 @@ include '../config/config.php';
                                                         </td>
                                                         <td>
                                                             <?php echo $row['full_name']; ?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row['picture']; ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $row['username']; ?>
@@ -150,12 +154,21 @@ include '../config/config.php';
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <form id="createForm_systemAdmin">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5">System Administrator</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                        <div class="modal-header bg-success">
+                            <h1 class="modal-title fs-5 text-center">Add System Administrator</h1>
                         </div>
 
                         <div class="modal-body">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label for="createPicturePreview_systemAdmin">Picture Preview</label>
+                                    <img alt="Admin Picture" id="createPicturePreview_systemAdmin" class="w-100 mb-2">
+                                    <input type="file" class="form-control" id="createPicture_systemAdmin"
+                                        name="createPicture_systemAdmin">
+                                </div>
+                            </div>
+
                             <div class="row mb-2">
                                 <div class="col">
                                     <label for="createFullName_systemAdmin">Full Name</label>
@@ -166,7 +179,7 @@ include '../config/config.php';
 
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="createUsername_systemAdmin">Username</label>
+                                    <label for="createUsername_systemAdmin">Username:</label>
                                     <input type="text" class="form-control" id="createUsername_systemAdmin"
                                         name="createUsername_systemAdmin" placeholder="Username">
                                 </div>
@@ -175,23 +188,27 @@ include '../config/config.php';
                             <div class="row">
                                 <div class="col">
                                     <label for="createPassword_systemAdmin">Password</label>
-                                    <div class="input-group">
-                                        <input type="password" class="form-control" id="createPassword_systemAdmin"
-                                            name="createPassword_systemAdmin" placeholder="Password">
-                                    </div>
+                                    <input type="password" class="form-control" id="createPassword_systemAdmin"
+                                        name="createPassword_systemAdmin" placeholder="Password">
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col">
                                     <input type="checkbox" id="togglePassword">
-                                    <label class="form-check-label" for="togglePassword"><b>Show Password</b></label>
+                                    <label class="form-check-label" for="togglePassword"><b>Show
+                                            Password</b></label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col">
-                                    <label for="createType_systemAdmin">Type</label>
+                                    <label for="createType_systemAdmin">Type
+                                        <span class="d-inline-block " tabindex="0"
+                                            data-toggle="tooltip" title="Admin's system access type">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
                                     <select class="form-control" id="createType_systemAdmin"
                                         name="createType_systemAdmin">
                                         <option value="ad3">Encoder</option>
@@ -200,14 +217,13 @@ include '../config/config.php';
                                     </select>
                                 </div>
                             </div>
-
                         </div>
 
-                        <div class="modal-footer justify-content-between">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="createSubmitBtn_admin">Add
-                                Admin</button>
+                        <div class="modal-footer justify-content-between bg-gray-light">
+                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" id="createSubmitBtn_admin">Submit</button>
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -221,6 +237,25 @@ include '../config/config.php';
                         className: 'add-btn',
                         action: function (e, dt, node, config) {
                             $('#createModal_systemAdmin').modal('show');
+
+                            // File Preview
+                            const fileInput = $("#createPicture_systemAdmin");
+                            const imagePreview = $("#createPicturePreview_systemAdmin");
+                            imagePreview.hide();
+                            fileInput.on("change", function () {
+                                if (fileInput[0].files.length > 0) {
+                                    const selectedFile = fileInput[0].files[0];
+                                    const reader = new FileReader();
+                                    reader.onload = function (e) {
+                                        imagePreview.attr("src", e.target.result);
+                                        imagePreview.show();
+                                    };
+                                    reader.readAsDataURL(selectedFile);
+                                } else {
+                                    imagePreview.hide();
+                                }
+                            });
+
                         }
                     }, {
                         extend: 'copy',
@@ -247,18 +282,38 @@ include '../config/config.php';
                 });
             });
 
-            $("#createForm_systemAdmin").on("submit", function () {
+            $("#createForm_systemAdmin").on("submit", function (e) {
+                e.preventDefault();
                 $.ajax({
+                    // data: $(this).serialize(),
+                    // contentType: "application/x-www-form-urlencoded; charset=UTF-8", //default
+                    // processData: true, //default
+
+                    // data: new FormData(this), //multipart/form-data
+                    // contentType: false,
+                    // processData: false,
                     type: "POST",
                     url: "../server/create_admin.php",
-                    data: $(this).serialize(),
                     dataType: "json",
-                    contentType: false,
-                    processData: false,
+                    headers: {
+                        "Authorization": "Bearer token"
+                    },
+                    statusCode: {
+                        404: function () {
+                            toastr.error("Status 404: URL Not Found")
+                        },
+                        500: function () {
+                            toastr.error("Status 500: Server Error")
+                        }
+                    },
                     success: function (responseData) {
-                        toastr.success('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
+                        toastr.success("Response: " + responseData.message)
                     },
                     error: function (xhr, status, error) {
+                        console.error("Xhr: ", xhr);
+                        console.error("Status: ", status); //"error", "abort", "timeout"
+                        console.error("Error: ", error);
+
                         toastr.error("Error occured: " + error)
                     }
                 })
