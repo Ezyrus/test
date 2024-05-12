@@ -21,6 +21,10 @@ function sanitizeData($connection, $data){
     return $data;
 }
 
+function getCurrentDateTime() {
+    $currentDateTime = (new DateTime())->format('Y-m-d H:i:s');
+    return $currentDateTime;
+}
 function formatDateTime($dateTimeString) {
     if ($dateTimeString === '0000-00-00 00:00:00') {
         return "Invalid Date and Time";

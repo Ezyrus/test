@@ -57,8 +57,8 @@ include '../config/config.php';
                                                     <th>Admin ID</th>
                                                     <th>Picture</th>
                                                     <th>Full Name</th>
-                                                    <th>Type</th>
                                                     <th>Username</th>
+                                                    <th>Type</th>
                                                     <th>Active</th>
                                                     <th>Added By</th>
                                                     <th>Date Registered</th>
@@ -77,50 +77,71 @@ include '../config/config.php';
                                                             <?php echo $row['id']; ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['full_name']; ?>
+                                                            <img src="../assets/img/admin_pictures/<?php echo $row['picture']; ?>"
+                                                                width="100" alt="Admin Picture">
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['picture']; ?>
+                                                            <?php echo $row['fullname']; ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $row['username']; ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['type']; ?>
+                                                            <?php
+                                                               if ($row['type'] == "ad3") {
+                                                                echo "Encoder";
+                                                            } else if ($row['type'] == "ad2"){
+                                                                echo "Admin";
+                                                            } else {
+                                                                echo "Super Admin";
+                                                            }
+                                                            ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['is_active']; ?>
+                                                            <?php
+                                                            if ($row['is_active'] == 1) {
+                                                                echo "<span class='badge badge-success'>Active</span>";
+                                                            } else {
+                                                                echo "<span class='badge badge-danger'>Inactive</span>";
+                                                            }
+                                                            ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['added_by']; ?>
+                                                            <span class="badge badge-primary text-capitalize">Admin
+                                                                <?php echo $row['added_by']; ?>
+                                                            </span>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row['date_registered']; ?>
+                                                            <?php
+                                                            $formattedDateTime = formatDateTime($row['date_registered']);
+                                                            echo "<span class='badge badge-warning'>$formattedDateTime</span>"; 
+                                                            ?>
                                                         </td>
                                                         <td class="text-center" style="width: 10%;">
                                                             <div class="btn-group" role="group"
                                                                 aria-label="System Administrator Actions">
+
                                                                 <button type="button" class="btn bg-green"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#readModal_systemAdministrator"
                                                                     data-id="<?php echo $row['id']; ?>"
-                                                                    data-role="readBtn_systemAdministrator">
+                                                                    data-role="readBtn_systemAdmins">
                                                                     <i class="fa-solid fa-eye fa-xl"
                                                                         style="color: white;"></i>
                                                                 </button>
 
                                                                 <button type="button" class="btn bg-blue"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#updateModal_systemAdministrator"
+                                                                    data-bs-target="#updateModal_systemAdmins"
                                                                     data-id="<?php echo $row['id']; ?>"
-                                                                    data-role="updateBtn_systemAdministrator">
+                                                                    data-role="updateBtn_systemAdmins">
                                                                     <i class="fa-solid fa-pen-to-square fa-xl"
                                                                         style="color: white;"></i>
                                                                 </button>
 
                                                                 <button type="button" class="btn bg-red"
-                                                                    data-id="<?php echo $row['admin_id']; ?>"
-                                                                    data-role="deleteBtn_systemAdministrator">
+                                                                    data-id="<?php echo $row['id']; ?>"
+                                                                    data-role="deleteBtn_systemAdmins">
                                                                     <i class="fa-solid fa-trash fa-xl"
                                                                         style="color: white;"></i>
                                                                 </button>
@@ -165,7 +186,7 @@ include '../config/config.php';
                                     <label for="createPicturePreview_systemAdmin">Picture Preview</label>
                                     <img alt="Admin Picture" id="createPicturePreview_systemAdmin" class="w-100 mb-2">
                                     <input type="file" class="form-control" id="createPicture_systemAdmin"
-                                        name="createPicture_systemAdmin">
+                                        name="createPicture_systemAdmin" required>
                                 </div>
                             </div>
 
@@ -173,7 +194,7 @@ include '../config/config.php';
                                 <div class="col">
                                     <label for="createFullName_systemAdmin">Full Name</label>
                                     <input type="text" class="form-control" id="createFullName_systemAdmin"
-                                        name="createFullName_systemAdmin" placeholder="Full Name">
+                                        name="createFullName_systemAdmin" placeholder="Full Name" required>
                                 </div>
                             </div>
 
@@ -181,7 +202,7 @@ include '../config/config.php';
                                 <div class="col">
                                     <label for="createUsername_systemAdmin">Username:</label>
                                     <input type="text" class="form-control" id="createUsername_systemAdmin"
-                                        name="createUsername_systemAdmin" placeholder="Username">
+                                        name="createUsername_systemAdmin" placeholder="Username" required>
                                 </div>
                             </div>
 
@@ -189,7 +210,7 @@ include '../config/config.php';
                                 <div class="col">
                                     <label for="createPassword_systemAdmin">Password</label>
                                     <input type="password" class="form-control" id="createPassword_systemAdmin"
-                                        name="createPassword_systemAdmin" placeholder="Password">
+                                        name="createPassword_systemAdmin" placeholder="Password" required>
                                 </div>
                             </div>
 
@@ -204,8 +225,8 @@ include '../config/config.php';
                             <div class="row">
                                 <div class="col">
                                     <label for="createType_systemAdmin">Type
-                                        <span class="d-inline-block " tabindex="0"
-                                            data-toggle="tooltip" title="Admin's system access type">
+                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                            title="Admin's system access type">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
@@ -255,7 +276,6 @@ include '../config/config.php';
                                     imagePreview.hide();
                                 }
                             });
-
                         }
                     }, {
                         extend: 'copy',
@@ -289,9 +309,9 @@ include '../config/config.php';
                     // contentType: "application/x-www-form-urlencoded; charset=UTF-8", //default
                     // processData: true, //default
 
-                    // data: new FormData(this), //multipart/form-data
-                    // contentType: false,
-                    // processData: false,
+                    data: new FormData(this), //multipart/form-data
+                    contentType: false,
+                    processData: false,
                     type: "POST",
                     url: "../server/create_admin.php",
                     dataType: "json",
@@ -307,7 +327,8 @@ include '../config/config.php';
                         }
                     },
                     success: function (responseData) {
-                        toastr.success("Response: " + responseData.message)
+                        toastr.success("Response = { " + responseData.message + " }.")
+                        location.reload();
                     },
                     error: function (xhr, status, error) {
                         console.error("Xhr: ", xhr);
