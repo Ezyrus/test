@@ -36,4 +36,8 @@
 .dataTables_wrapper .dt-buttons .add-btn {
     background-color: darkgreen;
 }
+
+.dataTables_wrapper .dt-buttons .reload-btn {
+    background-color: blue;
+}
  /* default datatable button styles  */

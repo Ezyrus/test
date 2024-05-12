@@ -1,18 +1,18 @@
 <?php
 include '../config/config.php';
 
-// Define your query
-$query = "SELECT * FROM `system_admins`";
+$response = array(
+    'system_admins' => ''
+  );
+  
+$query = "SELECT * FROM `system_admins` ORDER BY `id` DESC";
+$result = $db->query($query);
 
-// Execute the query
-$result = $conn->query($query);
-
-// Fetch data and format as JSON
-$data = array();
+$systemAdmins = array();
 while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
+    $systemAdmins[] = $row;
 }
 
-
-echo json_encode($data);
+$response['system_admins'] = $systemAdmins;
+echo json_encode($response);
 ?>

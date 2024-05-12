@@ -26,7 +26,6 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
     $response['message'] = 'Username is already taken.';
     $selectAdminQuery->close();
   } else {
-    // $response['message'] = 'Username is unique, you re good to go.';
     $createPasswordHashed_systemAdmin = password_hash($createPassword_systemAdmin, PASSWORD_DEFAULT);
     $isActive = 1;
     $addedBy = "cyrus";
