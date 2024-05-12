@@ -44,3 +44,4 @@
 <script src="../assets/plugins/DataTables/datatables.min.js"></script>
 
 <link rel="stylesheet" href="../assets/css/main.css">
+<script src="../config/config.js"></script>

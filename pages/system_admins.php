@@ -186,7 +186,7 @@ include '../config/config.php';
                         <div class="modal-body">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="readPicturePreview_systemAdmin">Picture Preview</label>
+                                    <label for="readPicturePreview_systemAdmin">Picture</label>
                                     <img alt="Admin Picture" id="readPicturePreview_systemAdmin" class="w-100 mb-2">
                                 </div>
                             </div>
@@ -194,16 +194,23 @@ include '../config/config.php';
                             <div class="row mb-2">
                                 <div class="col">
                                     <label for="readFullName_systemAdmin">Full Name</label>
-                                    <input type="text" class="form-control" id="readFullName_systemAdmin"
-                                        name="readFullName_systemAdmin" placeholder="Full Name" readonly>
+                                    <input type="text" class="form-control text-capitalize"
+                                        id="readFullName_systemAdmin" name="readFullName_systemAdmin"
+                                        placeholder="Full Name" readonly>
                                 </div>
                             </div>
 
                             <div class="row mb-2">
-                                <div class="col">
+                                <div class="col-7">
                                     <label for="readUsername_systemAdmin">Username</label>
                                     <input type="text" class="form-control" id="readUsername_systemAdmin"
                                         name="readUsername_systemAdmin" placeholder="Username" readonly>
+                                </div>
+
+                                <div class="col-5">
+                                    <label for="readId_systemAdmin">Admin ID</label>
+                                    <input type="text" class="form-control" id="readId_systemAdmin"
+                                        name="readId_systemAdmin" placeholder="ID" readonly>
                                 </div>
                             </div>
 
@@ -225,19 +232,22 @@ include '../config/config.php';
 
                                 <div class="col">
                                     <label for="readIsActive_systemAdmin">Is Active?</label>
-                                    <input type="text" class="form-control" id="readIsActive_systemAdmin"
-                                        name="readIsActive_systemAdmin" placeholder="Is Active?" readonly>
+                                    <select class="form-control" id="readIsActive_systemAdmin"
+                                        name="readIsActive_systemAdmin" readonly>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col">
-                                    <label for="readIsActive_systemAdmin">Added By</label>
-                                    <input type="text" class="form-control" id="readIsActive_systemAdmin"
-                                        name="readIsActive_systemAdmin" placeholder="Added By" readonly>
+                                <div class="col-5">
+                                    <label for="readAddedBy_systemAdmin">Added By</label>
+                                    <input type="text" class="form-control text-capitalize" id="readAddedBy_systemAdmin"
+                                        name="readAddedBy_systemAdmin" placeholder="Added By" readonly>
                                 </div>
 
-                                <div class="col">
+                                <div class="col-7">
                                     <label for="readDateRegistered_systemAdmin">Date Registered </label>
                                     <input type="text" class="form-control" id="readDateRegistered_systemAdmin"
                                         name="readDateRegistered_systemAdmin" placeholder="Date Registered" readonly>
@@ -247,6 +257,102 @@ include '../config/config.php';
 
                         <div class="modal-footer justify-content-between bg-gray-light">
                             <button type="button" class="btn btn-default w-100" data-bs-dismiss="modal">Close</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!--- Update Administrator ----->
+        <div class="modal fade" id="updateModal_systemAdmin" tabindex="-1" data-bs-backdrop="static" role="dialog"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form id="updateForm_systemAdmin">
+
+                        <div class="modal-header bg-primary">
+                            <h1 class="modal-title fs-5 text-center">Update System Administrator</h1>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label for="updatePicturePreview_systemAdmin">Picture</label>
+                                    <img alt="Admin Picture" id="updatePicturePreview_systemAdmin" class="w-100 mb-2">
+                                    <input type="file" class="form-control" id="updatePicture_systemAdmin"
+                                        name="updatePicture_systemAdmin">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label for="updateFullName_systemAdmin">Full Name</label>
+                                    <input type="text" class="form-control text-capitalize"
+                                        id="updateFullName_systemAdmin" name="updateFullName_systemAdmin"
+                                        placeholder="Full Name" required>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-7">
+                                    <label for="updateUsername_systemAdmin">Username</label>
+                                    <input type="text" class="form-control" id="updateUsername_systemAdmin"
+                                        name="updateUsername_systemAdmin" placeholder="Username" readonly>
+                                </div>
+
+                                <div class="col-5">
+                                    <label for="updateId_systemAdmin">Admin ID</label>
+                                    <input type="text" class="form-control" id="updateId_systemAdmin"
+                                        name="updateId_systemAdmin" placeholder="ID" readonly>
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col">
+                                    <label for="updateType_systemAdmin">Type
+                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                            title="Admin's system access type">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
+                                    <select class="form-control" id="updateType_systemAdmin"
+                                        name="updateType_systemAdmin" required>
+                                        <option value="ad3">Encoder</option>
+                                        <option value="ad2">Admin</option>
+                                        <option value="ad1">Super Admin</option>
+                                    </select>
+                                </div>
+
+                                <div class="col">
+                                    <label for="updateIsActive_systemAdmin">Is Active?</label>
+                                    <select class="form-control" id="updateIsActive_systemAdmin"
+                                        name="updateIsActive_systemAdmin" required>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-5">
+                                    <label for="updateAddedBy_systemAdmin">Added By</label>
+                                    <input type="text" class="form-control text-capitalize"
+                                        id="updateAddedBy_systemAdmin" name="updateAddedBy_systemAdmin"
+                                        placeholder="Added By" readonly>
+                                </div>
+
+                                <div class="col-7">
+                                    <label for="updateDateRegistered_systemAdmin">Date Registered </label>
+                                    <input type="text" class="form-control" id="updateDateRegistered_systemAdmin"
+                                        name="updateDateRegistered_systemAdmin" placeholder="Date Registered" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer justify-content-between bg-gray-light">
+                            <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="updateSubmitBtn_admin">Update</button>
                         </div>
 
                     </form>
@@ -310,14 +416,21 @@ include '../config/config.php';
                         dataSrc: 'system_admins' // if your data is not wrapped in a specific key
                     },
                     columns: [{
-                        data: 'id'
+                        data: 'id',
+                        render: function (data, type, row) {
+                            return 'ADMIN' + data;
+                        }
                     }, {
                         data: 'picture',
                         render: function (data, type, row) {
                             return '<img src="../assets/img/admin_pictures/' + data + '" width="100" alt="Admin Picture">';
                         }
                     }, {
-                        data: 'fullname'
+                        data: 'fullname',
+                        render: function (data, type, row) {
+                            return data.charAt(0).toUpperCase() + data.slice(1);
+                        }
+
                     }, {
                         data: 'username'
                     }, {
@@ -354,9 +467,9 @@ include '../config/config.php';
                         data: null,
                         render: function (data, type, row) {
                             return '<div class="btn-group" role="group" aria-label="System Administrator Actions">' +
-                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.id + '" data-role="readBtn_systemAdmins"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-blue" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmins" data-id="' + row.id + '" data-role="updateBtn_systemAdmins"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-red" data-id="' + row.id + '" data-role="deleteBtn_systemAdmins"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.id + '" data-role="readBtn_systemAdmin"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-blue" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmin" data-id="' + row.id + '" data-role="updateBtn_systemAdmin"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-red" data-id="' + row.id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
                                 '</div>';
                         }
                     }]
@@ -398,6 +511,7 @@ include '../config/config.php';
                         if (responseData.status) {
                             toastr.success(responseData.message)
 
+                            reloadTableOverlay();
                             $('#createModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
                         } else {
@@ -415,27 +529,63 @@ include '../config/config.php';
             })
 
             // Read Admin: Populate Fields
-            $(document).on('click', 'button[data-role=readBtn_systemAdmins]', function() {
-                $.ajax ({
-                    url: '',
+            $(document).on('click', 'button[data-role=readBtn_systemAdmin]', function () {
+                $.ajax({
+                    url: '../server/read_admin.php',
                     type: 'POST',
-                    data: '',
-                    dataType: '',
-                    success: function(responseData) {
-
+                    data: {
+                        "id_systemAdmin": $(this).attr('data-id'),
                     },
-                    error: function(xhr, status, error) {
-
+                    dataType: 'json',
+                    success: function (responseData) {
+                        if (responseData.status) {
+                            $('#readPicturePreview_systemAdmin').attr('src', '../assets/img/admin_pictures/' + responseData.systemAdminsData.picture);
+                            $('#readFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
+                            $('#readUsername_systemAdmin').val(responseData.systemAdminsData.username);
+                            $('#readId_systemAdmin').val(responseData.systemAdminsData.id);
+                            $('#readType_systemAdmin').val(responseData.systemAdminsData.type);
+                            $('#readIsActive_systemAdmin').val(responseData.systemAdminsData.is_active)
+                            $('#readAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
+                            $('#readDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        toastr.error("Error occured please contact developers immediately.")
                     }
                 })
             })
-            function reloadTableOverlay() {
-                $('#reloadOverlay').show();
-                $('#table_systemAdmins').DataTable().ajax.reload(function () { // Reload DataTable
-                    $('#reloadOverlay').hide();
-                    toastr.info("Table has been reloaded.", "", { positionClass: "toast-top-center" });
-                });
-            }
+
+            // Update Admin: Populate Fields
+            $(document).on('click', 'button[data-role=updateBtn_systemAdmin]', function () {
+                $.ajax({
+                    url: '../server/read_admin.php',
+                    type: 'POST',
+                    data: {
+                        "id_systemAdmin": $(this).attr('data-id'),
+                    },
+                    dataType: 'json',
+                    success: function (responseData) {
+                        if (responseData.status) {
+                            $('#updatePicturePreview_systemAdmin').attr('src', '../assets/img/admin_pictures/' + responseData.systemAdminsData.picture);
+                            $('#updateFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
+                            $('#updateUsername_systemAdmin').val(responseData.systemAdminsData.username);
+                            $('#updateId_systemAdmin').val(responseData.systemAdminsData.id);
+                            $('#updateType_systemAdmin').val(responseData.systemAdminsData.type);
+                            $('#updateIsActive_systemAdmin').val(responseData.systemAdminsData.is_active)
+                            $('#updateAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
+                            $('#updateDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        toastr.error("Error occured please contact developers immediately.")
+                    }
+                })
+            })
+
+            // Update Admin: Update Fields
+            $("#updateForm_systemAdmin").on("submit", function (e) {
+                e.preventDefault();
+            })
         </script>
 
     </body>

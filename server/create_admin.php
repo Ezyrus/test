@@ -20,14 +20,14 @@ $createType_systemAdmin = $_POST["createType_systemAdmin"];
 if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `username` = ? ")) {
   $selectAdminQuery->bind_param("s", $createUsername_systemAdmin);
   $selectAdminQuery->execute();
-  $selectAdminQuery->store_result();
+  $resultSelectAdminQuery = $selectAdminQuery->get_result();
 
-  if ($selectAdminQuery->num_rows > 0) {
+  if ($resultSelectAdminQuery->num_rows > 0) {
     $response['message'] = 'Username is already taken.';
     $selectAdminQuery->close();
   } else {
     $createPasswordHashed_systemAdmin = password_hash($createPassword_systemAdmin, PASSWORD_DEFAULT);
-    $isActive = 1;
+    $isActive = 1;  
     $addedBy = "cyrus";
     $currentDateTime = getCurrentDateTime();
 
