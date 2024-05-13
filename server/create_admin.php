@@ -54,7 +54,5 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
   http_response_code(500); // Server Error
 }
 
-// $response['message'] = "Full Name: " . $createFullName_systemAdmin . " Username: " . $createUsername_systemAdmin . " Password: " . $createPassword_systemAdmin . " Type: " . $createType_systemAdmin . " Picture Name: " . $createPictureName_systemAdmin . " Picture Tmp Name: " . $createPictureTmpName_systemAdmin;
-
 echo json_encode($response);
 ?>

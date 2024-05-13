@@ -14,11 +14,3 @@ function formatDateTime(dateTimeString) {
     };
     return dateTime.toLocaleString('en-US', options);
 }
-
-function reloadTableOverlay() {
-    $('#reloadOverlay').show();
-    $('#table_systemAdmins').DataTable().ajax.reload(function () { // Reload DataTable
-        $('#reloadOverlay').hide();
-        toastr.info("Table has been reloaded");
-    });
-}

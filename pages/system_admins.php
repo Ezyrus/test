@@ -105,7 +105,9 @@ include '../config/config.php';
                         <div class="modal-body">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="createPicturePreview_systemAdmin">Picture Preview</label>
+                                    <label for="createPicturePreview_systemAdmin">Picture: </label>
+                                    <span id="createPictureFileName"
+                                        class="text-muted font-weight-normal font-italic"></span>
                                     <img alt="Admin Picture" id="createPicturePreview_systemAdmin" class="w-100 mb-2">
                                     <input type="file" class="form-control" id="createPicture_systemAdmin"
                                         name="createPicture_systemAdmin" required>
@@ -186,7 +188,8 @@ include '../config/config.php';
                         <div class="modal-body">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="readPicturePreview_systemAdmin">Picture</label>
+                                    <label for="readPicturePreview_systemAdmin">Picture: <span id="readPictureFileName"
+                                            class="text-muted font-weight-normal font-italic"></span></label>
                                     <img alt="Admin Picture" id="readPicturePreview_systemAdmin" class="w-100 mb-2">
                                 </div>
                             </div>
@@ -231,7 +234,12 @@ include '../config/config.php';
                                 </div>
 
                                 <div class="col">
-                                    <label for="readIsActive_systemAdmin">Is Active?</label>
+                                    <label for="readIsActive_systemAdmin">Is Active?
+                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                            title="Admin activeness, does not affect the system.">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
                                     <select class="form-control" id="readIsActive_systemAdmin"
                                         name="readIsActive_systemAdmin" readonly>
                                         <option value="1">Active</option>
@@ -278,7 +286,9 @@ include '../config/config.php';
                         <div class="modal-body">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="updatePicturePreview_systemAdmin">Picture</label>
+                                    <label for="updatePicturePreview_systemAdmin">Picture: </label>
+                                    <span id="updatePictureFileName"
+                                        class="text-muted font-weight-normal font-italic"></span>
                                     <img alt="Admin Picture" id="updatePicturePreview_systemAdmin" class="w-100 mb-2">
                                     <input type="file" class="form-control" id="updatePicture_systemAdmin"
                                         name="updatePicture_systemAdmin">
@@ -325,7 +335,12 @@ include '../config/config.php';
                                 </div>
 
                                 <div class="col">
-                                    <label for="updateIsActive_systemAdmin">Is Active?</label>
+                                    <label for="updateIsActive_systemAdmin">Is Active?
+                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                            title="Admin activeness, does not affect the system.">
+                                            <i class="fas fa-question-circle"></i>
+                                        </span>
+                                    </label>
                                     <select class="form-control" id="updateIsActive_systemAdmin"
                                         name="updateIsActive_systemAdmin" required>
                                         <option value="1">Active</option>
@@ -392,7 +407,14 @@ include '../config/config.php';
                         text: '<i class="fa-solid fa-rotate-right"></i>',
                         className: 'reload-btn',
                         action: function (e, dt, node, config) {
-                            reloadTableOverlay()
+                            $('#reloadOverlay').show();
+                            $('#table_systemAdmins').DataTable().ajax.reload(function () { // Reload DataTable
+                                $('#reloadOverlay').hide();
+                                toastr.info("Table has been reloaded", "", {
+                                    positionClass: "toast-top-center",
+                                    preventDuplicates: true,
+                                });
+                            });
                         }
                     }, {
                         extend: 'copy',
@@ -456,12 +478,12 @@ include '../config/config.php';
                     }, {
                         data: 'added_by',
                         render: function (data, type, row) {
-                            return '<span class="badge badge-primary text-capitalize">Admin ' + data + '</span>';
+                            return '<span class="badge badge-info text-capitalize">Admin ' + data + '</span>';
                         }
                     }, {
                         data: 'date_registered',
                         render: function (data, type, row) {
-                            return '<span class="badge badge-warning">' + data + '</span>';
+                            return '<span class="badge badge-warning">' + formatDateTime(data) + '</span>';
                         }
                     }, {
                         data: null,
@@ -479,6 +501,23 @@ include '../config/config.php';
                     var passwordField = $("#createPassword_systemAdmin");
                     var isChecked = $(this).is(":checked");
                     passwordField.attr("type", isChecked ? "text" : "password");
+                });
+
+                const createPicture_systemAdmin = $("#createPicture_systemAdmin");
+                const createPicturePreview_systemAdmin = $("#createPicturePreview_systemAdmin");
+                createPicture_systemAdmin.on("change", function () {
+                    if (createPicture_systemAdmin[0].files.length > 0) {
+                        const selectedFile = createPicture_systemAdmin[0].files[0];
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            createPicturePreview_systemAdmin.attr("src", e.target.result);
+                            createPicturePreview_systemAdmin.show();
+                        };
+                        reader.readAsDataURL(selectedFile);
+                    } else {
+                        createPicturePreview_systemAdmin.hide();
+                    }
+                    $('#createPictureFileName').text(createPicture_systemAdmin.val().split("\\").pop());
                 });
             });
 
@@ -509,9 +548,14 @@ include '../config/config.php';
                     // },
                     success: function (responseData) {
                         if (responseData.status) {
-                            toastr.success(responseData.message)
-
-                            reloadTableOverlay();
+                            $('#table_systemAdmins').DataTable().ajax.reload(function () {
+                                $('#reloadOverlay').hide();
+                                toastr.success(responseData.message, "", {
+                                    positionClass: "toast-top-right",
+                                    preventDuplicates: true,
+                                    progressBar: true
+                                });
+                            });
                             $('#createModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
                         } else {
@@ -540,6 +584,7 @@ include '../config/config.php';
                     success: function (responseData) {
                         if (responseData.status) {
                             $('#readPicturePreview_systemAdmin').attr('src', '../assets/img/admin_pictures/' + responseData.systemAdminsData.picture);
+                            $('#readPictureFileName').text(responseData.systemAdminsData.picture);
                             $('#readFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
                             $('#readUsername_systemAdmin').val(responseData.systemAdminsData.username);
                             $('#readId_systemAdmin').val(responseData.systemAdminsData.id);
@@ -567,6 +612,7 @@ include '../config/config.php';
                     success: function (responseData) {
                         if (responseData.status) {
                             $('#updatePicturePreview_systemAdmin').attr('src', '../assets/img/admin_pictures/' + responseData.systemAdminsData.picture);
+                            $('#updatePictureFileName').text(responseData.systemAdminsData.picture);
                             $('#updateFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
                             $('#updateUsername_systemAdmin').val(responseData.systemAdminsData.username);
                             $('#updateId_systemAdmin').val(responseData.systemAdminsData.id);
@@ -580,11 +626,93 @@ include '../config/config.php';
                         toastr.error("Error occured please contact developers immediately.")
                     }
                 })
+
+                const updatePicture_systemAdmin = $("#updatePicture_systemAdmin");
+                const updatePicturePreview_systemAdmin = $("#updatePicturePreview_systemAdmin");
+                updatePicture_systemAdmin.on("change", function () {
+                    if (updatePicture_systemAdmin[0].files.length > 0) {
+                        const selectedFile = updatePicture_systemAdmin[0].files[0];
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            updatePicturePreview_systemAdmin.attr("src", e.target.result);
+                            updatePicturePreview_systemAdmin.show();
+                        };
+                        reader.readAsDataURL(selectedFile);
+                    } else {
+                        updatePicturePreview_systemAdmin.hide();
+                    }
+                    $('#updatePictureFileName').text(updatePicture_systemAdmin.val().split("\\").pop());
+                });
             })
 
             // Update Admin: Update Fields
             $("#updateForm_systemAdmin").on("submit", function (e) {
                 e.preventDefault();
+                $.ajax({
+                    url: '../server/update_admin.php',
+                    type: 'POST',
+                    data: new FormData(this),
+                    dataType: 'json',
+                    contentType: false,
+                    processData: false,
+                    success: function (responseData) {
+                        if (responseData.status) {
+                            $('#table_systemAdmins').DataTable().ajax.reload(function () {
+                                $('#reloadOverlay').hide();
+                                toastr.success(responseData.message, "", {
+                                    positionClass: "toast-top-right",
+                                    preventDuplicates: true,
+                                    progressBar: true
+                                });
+                            });
+                            $('#updateModal_systemAdmin').modal('hide'); // Hide modal
+                            $(this).trigger("reset"); // Reset form
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        toastr.error("Error occured please contact developers immediately.")
+                    }
+                })
+            })
+
+            $(document).on('click', 'button[data-role=deleteBtn_systemAdmin]', function () {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+                    reverseButtons: true,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '../server/delete_admin.php',
+                            type: 'POST',
+                            data: {
+                                "id_systemAdmin": $(this).attr('data-id')
+                            },
+                            dataType: 'json',
+                            success: function (responseData) {
+                                if (responseData.status) {
+                                    $('#table_systemAdmins').DataTable().ajax.reload(function () {
+                                        $('#reloadOverlay').hide();
+                                        toastr.success(responseData.message, "", {
+                                            positionClass: "toast-top-right",
+                                            preventDuplicates: true,
+                                            progressBar: true
+                                        });
+                                    });
+                                } else {
+                                    toastr.error(responseData.message);
+                                }
+                            },
+                            error: function (xhr, status, error) {
+                                toastr.error("Error occurred. Please contact developers immediately.");
+                            }
+                        });
+                    }
+                });
             })
         </script>
 
