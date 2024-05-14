@@ -8,11 +8,14 @@ include '../config/config.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>test</title>
+        <title>test-web</title>
     </head>
 
     <body>
 
-    </body>
 
+        <script>
+
+        </script>
+    </body>
 </html>

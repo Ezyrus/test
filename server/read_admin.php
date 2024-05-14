@@ -16,10 +16,10 @@ if ($readAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `id` = ?
 
         if ($resultReadAdminQuery->num_rows > 0) {
             $response["status"] = true;
-            $response["message"] = "Admins retrieved successfully.";
+            $response["message"] = "Admins Retrieved";
 
-            $row = $resultReadAdminQuery->fetch_assoc();
-            $response["systemAdminsData"] = $row;
+            $rowReadAdminQuery = $resultReadAdminQuery->fetch_assoc();
+            $response["systemAdminsData"] = $rowReadAdminQuery;
         }
 
     } else {

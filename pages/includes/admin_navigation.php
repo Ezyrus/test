@@ -1,6 +1,6 @@
-<!-- Navbar -->
+<!-- Header Navigation Bar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
+    <!-- Left links -->
     <ul class="navbar-nav">
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -13,7 +13,7 @@
         </li>
     </ul>
 
-    <!-- Right navbar links -->
+    <!-- Right links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
         <li class="nav-item">
@@ -45,9 +45,8 @@
         </li>
     </ul>
 </nav>
-<!-- /.navbar -->
 
-<!-- Main Sidebar Container -->
+<!-- Main Sidebar  -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
         <img src="./../assets/img/yourdevlogo.png" alt="YourDev Logo" class="brand-image elevation-3">
@@ -59,10 +58,10 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="./../assets/img/yourdevlogo.png" class="img-circle elevation-2" alt="User Image">
+                <img src="./../assets/img/<?php echo $_SESSION["adminLogged"]["picture"]; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Admin Logged</a>
+                <a href="#" class="d-block text-capitalize"><?php echo $_SESSION["adminLogged"]["fullname"]; ?></a>
             </div>
         </div>
 
@@ -95,14 +94,14 @@
                 <li class="nav-header">System</li>
                 <li class="nav-item">
                     <a href="system_admins.php" class="nav-link">
-                        <i class="nav-icon fa-solid fa-user-tie"></i>
+                        <i class="nav-icon fa-solid fa-user"></i>
                         <p>Administrators</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fa-solid fa-gears"></i>
-                        <p>Settings</p>
+                        <i class="nav-icon fa-solid fa-user-clock"></i>
+                        <p>Admin Sessions</p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -113,7 +112,13 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                    <i class="nav-icon fa-solid fa-right-from-bracket"></i>
+                        <i class="nav-icon fa-solid fa-gears"></i>
+                        <p>Settings</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../server/admin_logout.php" class="nav-link">
+                        <i class="nav-icon fa-solid fa-right-from-bracket"></i>
                         <p>Logout</p>
                     </a>
                 </li>

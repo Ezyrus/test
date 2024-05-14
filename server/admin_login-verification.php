@@ -1,25 +1,26 @@
 <?php
 session_start();
 
-$adminLogged = $_SESSION['adminLogged'];
-if (empty($adminLogged)) {
+if (empty($_SESSION['adminLogged'])) {
     header('Location: ../pages/admin_log-in.php');
     exit;
 }
 
-if ($adminSelectQuery = $db->prepare("SELECT `username`, `type_id` FROM system_admins WHERE `username` = ? ")) {
-    $adminSelectQuery->bind_param("s", $adminLogged);
-    if ($adminSelectQuery->execute()) {
-        $adminSelectQuery->bind_result($db_adminId, $admintype); //Declare admin fullname to $db_adminFullName.
-        if (!$adminSelectQuery->fetch()) {
+if ($adminVerificationQuery = $db->prepare("SELECT * FROM system_admins WHERE `username` = ? ")) {
+    $adminVerificationQuery->bind_param("s", $_SESSION['adminLogged']["username"]);
+
+    if ($adminVerificationQuery->execute()) {
+        $resultAdminVerificationQuery = $adminVerificationQuery->get_result();
+
+        if ($resultAdminVerificationQuery->num_rows == 0) {
             header('Location: ../pages/admin_log-in.php');
             exit;
         }
     } else {
-        echo "An error occurred while executing Query: " . $adminSelectQuery->error;
+        echo "An error occurred while executing Query: " . $adminVerificationQuery->error;
         http_response_code(500); // Server Error
     }
-    $adminSelectQuery->close();
+    $adminVerificationQuery->close();
 } else {
     echo "An error occurred while preparing Query: " . $db->error;
     http_response_code(500); // Server Error

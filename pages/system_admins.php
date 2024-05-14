@@ -1,6 +1,6 @@
 <?php
 include '../config/config.php';
-// include '../server/admin_login-verification.php';
+include '../server/admin_login-verification.php';
 ?>
 
 <!DOCTYPE html>
@@ -46,16 +46,13 @@ include '../config/config.php';
                     <div class="container-fluid">
 
                         <div class="row">
-
                             <div class="col">
                                 <div class="card card-primary card-secondary">
-
                                     <div class="overlay" id="reloadOverlay">
                                         <i class="fas fa-3x fa-sync-alt"></i>
                                     </div>
 
                                     <div class="card-body">
-
                                         <table id="table_systemAdmins" class="table responsive">
                                             <thead>
                                                 <tr>
@@ -77,7 +74,42 @@ include '../config/config.php';
                                         </table>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
 
+                        <div class="row">
+                            <div class="col">
+                                <div class="card card-primary card-secondary">
+                                    <div class="overlay dark" id="reloadOverlay">
+                                        <i class="fas fa-3x fa-sync-alt"></i>
+                                    </div>
+
+                                    <div class="card-header bg-danger">
+                                        <h5 class="card-title">Archived Administrators</h5>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <table id="table_systemAdminsArchive" class="table responsive">
+                                            <thead>
+                                                <tr>
+                                                    <th>Admin ID</th>
+                                                    <th>Picture</th>
+                                                    <th>Full Name</th>
+                                                    <th>Username</th>
+                                                    <th>Type</th>
+                                                    <th>Is Active?</th>
+                                                    <th>Added By</th>
+                                                    <th>Date Registered</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -412,7 +444,7 @@ include '../config/config.php';
                                 $('#reloadOverlay').hide();
                                 toastr.info("Table has been reloaded", "", {
                                     positionClass: "toast-top-center",
-                                    preventDuplicates: true,
+                                    // preventDuplicates: true,
                                 });
                             });
                         }
@@ -435,7 +467,7 @@ include '../config/config.php';
                     ajax: {
                         url: '../server/populate_system-admins.php',
                         type: 'GET',
-                        dataSrc: 'system_admins' // if your data is not wrapped in a specific key
+                        dataSrc: 'system_admins'
                     },
                     columns: [{
                         data: 'id',
@@ -548,13 +580,10 @@ include '../config/config.php';
                     // },
                     success: function (responseData) {
                         if (responseData.status) {
+                            $('#reloadOverlay').show();
                             $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                 $('#reloadOverlay').hide();
-                                toastr.success(responseData.message, "", {
-                                    positionClass: "toast-top-right",
-                                    preventDuplicates: true,
-                                    progressBar: true
-                                });
+                                toastr.success(responseData.message)
                             });
                             $('#createModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
@@ -657,13 +686,10 @@ include '../config/config.php';
                     processData: false,
                     success: function (responseData) {
                         if (responseData.status) {
+                            $('#reloadOverlay').show();
                             $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                 $('#reloadOverlay').hide();
-                                toastr.success(responseData.message, "", {
-                                    positionClass: "toast-top-right",
-                                    preventDuplicates: true,
-                                    progressBar: true
-                                });
+                                toastr.success(responseData.message);
                             });
                             $('#updateModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
@@ -695,13 +721,10 @@ include '../config/config.php';
                             dataType: 'json',
                             success: function (responseData) {
                                 if (responseData.status) {
+                                    $('#reloadOverlay').show();
                                     $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                         $('#reloadOverlay').hide();
-                                        toastr.success(responseData.message, "", {
-                                            positionClass: "toast-top-right",
-                                            preventDuplicates: true,
-                                            progressBar: true
-                                        });
+                                        toastr.success(responseData.message);
                                     });
                                 } else {
                                     toastr.error(responseData.message);

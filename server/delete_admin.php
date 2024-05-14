@@ -13,7 +13,7 @@ if ($deleteAdminQuery = $db->prepare("DELETE FROM `system_admins` WHERE `id` = ?
 
     if ($deleteAdminQuery->execute()) {
         $response["status"] = true;
-        $response["message"] = "Admin has been deleted successfully.";
+        $response["message"] = "Admin Deleted";
     } else {
         $response["message"] = 'An error occurred while executing Query: ' . $deleteAdminQuery->error;
         http_response_code(500); // Server Error

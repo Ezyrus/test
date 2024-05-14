@@ -37,7 +37,7 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
 
       if ($insertAdminQuery->execute()) {
         $response['status'] = true;
-        $response['message'] = "Admin has been successfully added.";
+        $response['message'] = "Admin Added";
       } else {
         $response['message'] = 'An error occurred while executing Query: ' . $insertAdminQuery->error;
         http_response_code(500); // Server Error

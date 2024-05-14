@@ -1,6 +1,6 @@
 <?php
 include '../config/config.php';
-// include '../server/admin_login-verification.php';
+include '../server/admin_login-verification.php';
 ?>
 
 <!DOCTYPE html>
