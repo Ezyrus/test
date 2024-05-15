@@ -79,7 +79,6 @@
                         <i class="nav-icon fa-solid fa-table-list"></i>
                         <p>
                             Services
-                            <span class="badge badge-info right">2</span>
                         </p>
                     </a>
                 </li>
@@ -95,7 +94,7 @@
                 <li class="nav-item">
                     <a href="system_admins.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-user"></i>
-                        <p>Administrators</p>
+                        <p>Administrators <span class="badge badge-success right">1</span></p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -119,7 +118,7 @@
                 <li class="nav-item">
                     <a href="../server/admin_logout.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
-                        <p>Logout</p>
+                        <p>Logout  <span class="badge badge-success right">1</span></p>
                     </a>
                 </li>
 

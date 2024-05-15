@@ -10,15 +10,15 @@
 }
 
 .dataTables_wrapper .dt-buttons .buttons-copy {
-    background-color: gray;
+    background-color: darkgray;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-excel {
-    background-color: green;
+    background-color: darkgray;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-pdf {
-    background-color: blue;
+    background-color: darkgray;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-colvis {
@@ -33,8 +33,12 @@
     color: white;
 }
 
+.dataTables_wrapper .dt-buttons .filter-btn {
+    background-color: darkgray;
+}
+
 .dataTables_wrapper .dt-buttons .add-btn {
-    background-color: darkgreen;
+    background-color: green;
 }
 
 .dataTables_wrapper .dt-buttons .reload-btn {

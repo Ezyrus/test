@@ -12,7 +12,7 @@ $updatePictureTmpName_systemAdmin = $_FILES['updatePicture_systemAdmin']['tmp_na
 $updatePictureFilePath = $uploadDirectory . $updatePictureName_systemAdmin;
 
 $updateId_systemAdmin = $_POST["updateId_systemAdmin"];
-$updateFullName_systemAdmin = $_POST["updateFullName_systemAdmin"];
+$updateFullName_systemAdmin = sanitizeData($db, $_POST["updateFullName_systemAdmin"]);
 $updateType_systemAdmin = $_POST["updateType_systemAdmin"];
 $updateIsActive_systemAdmin = $_POST["updateIsActive_systemAdmin"];
 
@@ -22,7 +22,7 @@ if (!empty($updatePictureName_systemAdmin)) {
     
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
-            $response["message"] = "Admin has been successfully updated.";
+            $response["message"] = "Admin Updated.";
         } else {
             $response["message"] = 'An error occurred while executing Query: ' . $updateAdminQuery->error;
             http_response_code(500); // Server Error

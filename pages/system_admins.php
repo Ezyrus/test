@@ -460,6 +460,19 @@ include '../server/admin_login-verification.php';
                     }, {
                         extend: 'colvis',
                         text: '<i class="fas fa-columns"></i> Columns'
+                    },{
+                        text: '<i class="fas fa-filter"></i> Filter `Is Active`',
+                        className: 'filter-btn',
+                        action: function (e, dt, node, config) {
+                            var currentFilter = $('#table_systemAdmins').DataTable().column(5).search();
+                            if (currentFilter === '') {
+                                $('#table_systemAdmins').DataTable().column(5).search('Active').draw();
+                            } else if (currentFilter === 'Active') {
+                                $('#table_systemAdmins').DataTable().column(5).search('Inactive').draw();
+                            } else {
+                                $('#table_systemAdmins').DataTable().column(5).search('').draw();
+                            }
+                        }
                     }],
                     dom: 'Bfrtip',
                     responsive: true,
@@ -522,8 +535,8 @@ include '../server/admin_login-verification.php';
                         render: function (data, type, row) {
                             return '<div class="btn-group" role="group" aria-label="System Administrator Actions">' +
                                 '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.id + '" data-role="readBtn_systemAdmin"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-blue" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmin" data-id="' + row.id + '" data-role="updateBtn_systemAdmin"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-red" data-id="' + row.id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmin" data-id="' + row.id + '" data-role="updateBtn_systemAdmin"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-danger" data-id="' + row.id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
                                 '</div>';
                         }
                     }]

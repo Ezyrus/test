@@ -12,9 +12,9 @@ $createPictureName_systemAdmin = $_FILES['createPicture_systemAdmin']['name'];
 $createPictureTmpName_systemAdmin = $_FILES['createPicture_systemAdmin']['tmp_name'];
 $createPictureFilePath = $uploadDirectory . $createPictureName_systemAdmin;
 
-$createFullName_systemAdmin = $_POST["createFullName_systemAdmin"];
-$createUsername_systemAdmin = $_POST["createUsername_systemAdmin"];
-$createPassword_systemAdmin = $_POST["createPassword_systemAdmin"];
+$createFullName_systemAdmin = sanitizeData($db, $_POST["createFullName_systemAdmin"]);
+$createUsername_systemAdmin = sanitizeData($db, $_POST["createUsername_systemAdmin"]);
+$createPassword_systemAdmin = sanitizeData($db, $_POST["createPassword_systemAdmin"]);
 $createType_systemAdmin = $_POST["createType_systemAdmin"];
 
 if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `username` = ? ")) {
