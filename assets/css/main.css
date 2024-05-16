@@ -6,36 +6,43 @@
 }
 
 .dataTables_wrapper .dt-buttons button:hover {
+    color: white;
     background-color: orange !important;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-copy {
-    background-color: darkgray;
+    color: black;
+    background-color: yellow;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-excel {
-    background-color: darkgray;
+    color: black;
+    background-color: yellow;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-pdf {
-    background-color: darkgray;
+    color: black;
+    background-color: yellow;
 }
 
 .dataTables_wrapper .dt-buttons .buttons-colvis {
-    background-color: darkgray;
+    color: black;
+    background-color: yellow;
 }
 
 .dataTables_wrapper .dt-button-collection .buttons-columnVisibility {
     color: black;
 }
 
-.dataTables_wrapper .dt-button-collection .buttons-columnVisibility:hover {
-    color: white;
+.dataTables_wrapper .dt-buttons .filter-btn {
+    color: black;
+    background-color: yellow;
 }
 
-.dataTables_wrapper .dt-buttons .filter-btn {
-    background-color: darkgray;
+.dataTables_wrapper .dt-button-collection .dt-button {
+    color: black !important; /* Change the text color of the dropdown items */
 }
+
 
 .dataTables_wrapper .dt-buttons .add-btn {
     background-color: green;

@@ -6,7 +6,7 @@ if (empty($_SESSION['adminLogged'])) {
     exit;
 }
 
-if ($adminVerificationQuery = $db->prepare("SELECT * FROM system_admins WHERE `username` = ? ")) {
+if ($adminVerificationQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `username` = ? ")) {
     $adminVerificationQuery->bind_param("s", $_SESSION['adminLogged']["username"]);
 
     if ($adminVerificationQuery->execute()) {

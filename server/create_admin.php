@@ -27,12 +27,12 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
     $selectAdminQuery->close();
   } else {
     $createPasswordHashed_systemAdmin = password_hash($createPassword_systemAdmin, PASSWORD_DEFAULT);
-    $isActive = 1;  
-    $addedBy = "cyrus";
+    $systemAccess = 1;  
+    $addedBy = $_SESSION["adminLogged"]["username"];
     $currentDateTime = getCurrentDateTime();
 
-    if ($insertAdminQuery = $db->prepare("INSERT INTO `system_admins` (`picture`, `fullname`, `username`, `password`, `type`, `is_active`, `added_by`, `date_registered`) VALUES (?,?,?,?,?,?,?,?)")) {
-      $insertAdminQuery->bind_param("ssssssss", $createPictureName_systemAdmin, $createFullName_systemAdmin, $createUsername_systemAdmin, $createPasswordHashed_systemAdmin, $createType_systemAdmin, $isActive, $addedBy, $currentDateTime);
+    if ($insertAdminQuery = $db->prepare("INSERT INTO `system_admins` (`picture`, `fullname`, `username`, `password`, `type`, `system_access`, `added_by`, `date_registered`) VALUES (?,?,?,?,?,?,?,?)")) {
+      $insertAdminQuery->bind_param("ssssssss", $createPictureName_systemAdmin, $createFullName_systemAdmin, $createUsername_systemAdmin, $createPasswordHashed_systemAdmin, $createType_systemAdmin, $systemAccess, $addedBy, $currentDateTime);
       move_uploaded_file($createPictureTmpName_systemAdmin, $createPictureFilePath);
 
       if ($insertAdminQuery->execute()) {

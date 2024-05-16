@@ -47,10 +47,10 @@
 </nav>
 
 <!-- Main Sidebar  -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-3">
     <a href="#" class="brand-link">
         <img src="./../assets/img/yourdevlogo.png" alt="YourDev Logo" class="brand-image elevation-3">
-        <span class="brand-text font-weight-light">Your System</span>
+        <span class="brand-text font-weight-medium">Your System</span>
     </a>
 
 
@@ -58,10 +58,11 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="./../assets/img/<?php echo $_SESSION["adminLogged"]["picture"]; ?>" class="img-circle elevation-2" alt="User Image">
+                <img src="./../assets/img/<?php echo $_SESSION["adminLogged"]["picture"]; ?>"
+                    class="img-circle elevation-2" alt="Admin Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-capitalize"><?php echo $_SESSION["adminLogged"]["fullname"]; ?></a>
+                <a href="#" class="d-block text-capitalize text-success font-weight-medium"><?php echo $_SESSION["adminLogged"]["fullname"]; ?></a>
             </div>
         </div>
 
@@ -118,7 +119,7 @@
                 <li class="nav-item">
                     <a href="../server/admin_logout.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-right-from-bracket"></i>
-                        <p>Logout  <span class="badge badge-success right">1</span></p>
+                        <p>Logout <span class="badge badge-success right">1</span></p>
                     </a>
                 </li>
 

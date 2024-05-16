@@ -61,7 +61,7 @@ include '../server/admin_login-verification.php';
                                                     <th>Full Name</th>
                                                     <th>Username</th>
                                                     <th>Type</th>
-                                                    <th>Is Active?</th>
+                                                    <th>System Access</th>
                                                     <th>Added By</th>
                                                     <th>Date Registered</th>
                                                     <th>Actions</th>
@@ -182,7 +182,7 @@ include '../server/admin_login-verification.php';
                                 <div class="col">
                                     <label for="createType_systemAdmin">Type
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin's system access type">
+                                            title="Admin Access Type">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
@@ -253,12 +253,12 @@ include '../server/admin_login-verification.php';
                                 <div class="col">
                                     <label for="readType_systemAdmin">Type
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin's system access type">
+                                            title="Admin Access Type">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
                                     <select class="form-control" id="readType_systemAdmin" name="readType_systemAdmin"
-                                        readonly>
+                                        readonly disabled>
                                         <option value="ad3">Encoder</option>
                                         <option value="ad2">Admin</option>
                                         <option value="ad1">Super Admin</option>
@@ -266,16 +266,16 @@ include '../server/admin_login-verification.php';
                                 </div>
 
                                 <div class="col">
-                                    <label for="readIsActive_systemAdmin">Is Active?
+                                    <label for="readSystemAccess_systemAdmin">System Access
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin activeness, does not affect the system.">
+                                            title="Admin System Permission">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
-                                    <select class="form-control" id="readIsActive_systemAdmin"
-                                        name="readIsActive_systemAdmin" readonly>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
+                                    <select class="form-control" id="readSystemAccess_systemAdmin"
+                                        name="readSystemAccess_systemAdmin" readonly disabled>
+                                        <option value="1">Authorize Access</option>
+                                        <option value="0">Revoke Access</option>
                                     </select>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@ include '../server/admin_login-verification.php';
                                 <div class="col">
                                     <label for="updateType_systemAdmin">Type
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin's system access type">
+                                            title="Admin Access Type">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
@@ -367,16 +367,16 @@ include '../server/admin_login-verification.php';
                                 </div>
 
                                 <div class="col">
-                                    <label for="updateIsActive_systemAdmin">Is Active?
+                                    <label for="updateSystemAccess_systemAdmin">System Access
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin activeness, does not affect the system.">
+                                            title="Admin System Permission">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
-                                    <select class="form-control" id="updateIsActive_systemAdmin"
-                                        name="updateIsActive_systemAdmin" required>
-                                        <option value="1">Active</option>
-                                        <option value="0">Inactive</option>
+                                    <select class="form-control" id="updateSystemAccess_systemAdmin"
+                                        name="updateSystemAccess_systemAdmin" required>
+                                        <option value="1">Authorize Access</option>
+                                        <option value="0">Revoke Access</option>
                                     </select>
                                 </div>
                             </div>
@@ -460,19 +460,29 @@ include '../server/admin_login-verification.php';
                     }, {
                         extend: 'colvis',
                         text: '<i class="fas fa-columns"></i> Columns'
-                    },{
-                        text: '<i class="fas fa-filter"></i> Filter `Is Active`',
+                    }, {
+                        extend: 'collection',
+                        text: '<i class="fas fa-filter"></i> Filter System Access',
                         className: 'filter-btn',
-                        action: function (e, dt, node, config) {
-                            var currentFilter = $('#table_systemAdmins').DataTable().column(5).search();
-                            if (currentFilter === '') {
-                                $('#table_systemAdmins').DataTable().column(5).search('Active').draw();
-                            } else if (currentFilter === 'Active') {
-                                $('#table_systemAdmins').DataTable().column(5).search('Inactive').draw();
-                            } else {
-                                $('#table_systemAdmins').DataTable().column(5).search('').draw();
+                        autoClose: true,
+                        buttons: [
+                            {
+                                text: 'Authorized',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('Authorized').draw();
+                                }
+                            }, {
+                                text: 'Revoked Access',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('Revoked Access').draw();
+                                }
+                            }, {
+                                text: 'Clear Filter',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('').draw();
+                                }
                             }
-                        }
+                        ]
                     }],
                     dom: 'Bfrtip',
                     responsive: true,
@@ -512,12 +522,12 @@ include '../server/admin_login-verification.php';
                             }
                         }
                     }, {
-                        data: 'is_active',
+                        data: 'system_access',
                         render: function (data, type, row) {
                             if (data == 1) {
-                                return '<span class="badge badge-success">Active</span>';
+                                return '<span class="badge badge-success">Authorized</span>';
                             } else {
-                                return '<span class="badge badge-danger">Inactive</span>';
+                                return '<span class="badge badge-danger">Revoked Access</span>';
                             }
                         }
                     }, {
@@ -631,7 +641,7 @@ include '../server/admin_login-verification.php';
                             $('#readUsername_systemAdmin').val(responseData.systemAdminsData.username);
                             $('#readId_systemAdmin').val(responseData.systemAdminsData.id);
                             $('#readType_systemAdmin').val(responseData.systemAdminsData.type);
-                            $('#readIsActive_systemAdmin').val(responseData.systemAdminsData.is_active)
+                            $('#readSystemAccess_systemAdmin').val(responseData.systemAdminsData.system_access)
                             $('#readAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
                             $('#readDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
                         }
@@ -659,7 +669,7 @@ include '../server/admin_login-verification.php';
                             $('#updateUsername_systemAdmin').val(responseData.systemAdminsData.username);
                             $('#updateId_systemAdmin').val(responseData.systemAdminsData.id);
                             $('#updateType_systemAdmin').val(responseData.systemAdminsData.type);
-                            $('#updateIsActive_systemAdmin').val(responseData.systemAdminsData.is_active)
+                            $('#updateSystemAccess_systemAdmin').val(responseData.systemAdminsData.system_access)
                             $('#updateAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
                             $('#updateDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
                         }
