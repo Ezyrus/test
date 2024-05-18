@@ -19,7 +19,7 @@ include '../server/admin_login-verification.php';
             <?php include 'includes/admin_navigation.php'; ?>
 
             <div class="preloader flex-column justify-content-center align-items-center">
-                <img class="animation__wobble" src="../assets/img/yourdevlogo.png" alt="AdminLTELogo" height="100"
+                <img class="animation__wobble" src="../assets/img/yourdevlogo.png" alt="YouDev Logo" height="100"
                     width="100">
             </div>
 
@@ -462,29 +462,6 @@ include '../server/admin_login-verification.php';
                         text: '<i class="fas fa-columns"></i> Columns'
                     }, {
                         extend: 'collection',
-                        text: '<i class="fas fa-filter"></i> Filter System Access',
-                        className: 'filter-btn',
-                        autoClose: true,
-                        buttons: [
-                            {
-                                text: 'Authorized',
-                                action: function (e, dt, node, config) {
-                                    dt.column(5).search('Authorized').draw();
-                                }
-                            }, {
-                                text: 'Revoked Access',
-                                action: function (e, dt, node, config) {
-                                    dt.column(5).search('Revoked Access').draw();
-                                }
-                            }, {
-                                text: 'Clear Filter',
-                                action: function (e, dt, node, config) {
-                                    dt.column(5).search('').draw();
-                                }
-                            }
-                        ]
-                    }, {
-                        extend: 'collection',
                         text: '<i class="fas fa-filter"></i> Filter Admin Type',
                         className: 'filter-btn',
                         autoClose: true,
@@ -508,6 +485,29 @@ include '../server/admin_login-verification.php';
                                 text: 'Clear Filter',
                                 action: function (e, dt, node, config) {
                                     dt.column(4).search('').draw();
+                                }
+                            }
+                        ]
+                    }, { 
+                        extend: 'collection',
+                        text: '<i class="fas fa-filter"></i> Filter System Access',
+                        className: 'filter-btn',
+                        autoClose: true,
+                        buttons: [
+                            {
+                                text: 'Authorized',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('Authorized').draw();
+                                }
+                            }, {
+                                text: 'Revoked Access',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('Revoked Access').draw();
+                                }
+                            }, {
+                                text: 'Clear Filter',
+                                action: function (e, dt, node, config) {
+                                    dt.column(5).search('').draw();
                                 }
                             }
                         ]
@@ -535,7 +535,6 @@ include '../server/admin_login-verification.php';
                         render: function (data, type, row) {
                             return data.charAt(0).toUpperCase() + data.slice(1);
                         }
-
                     }, {
                         data: 'username'
                     }, {

@@ -1,4 +1,4 @@
-<script src="../assets/plugins/jquery/jquery_v3.7.1.js"></script>
+<script src="../plugins/jquery/jquery_v3.7.1.js"></script>
 <link href="../assets/img/yourdevlogo.png" rel="icon">
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -9,13 +9,13 @@
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
     
-<link rel="stylesheet" href="../assets/plugins/bootstrap-5.3.2-dist/css/bootstrap.min.css">
-<script src="../assets/plugins/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="../plugins/bootstrap-5.3.2-dist/css/bootstrap.min.css">
+<script src="../plugins/bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
 
 <link rel="stylesheet" href="../assets/adminlte-3.2.0/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <script src="../assets/adminlte-3.2.0/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 
-<link rel="stylesheet" href="../assets/plugins/fontawesome-free-6.4.2-web/css/all.min.css">
+<link rel="stylesheet" href="../plugins/fontawesome-free-6.4.2-web/css/all.min.css">
 <link rel="stylesheet" href="../assets/adminlte-3.2.0/dist/css/adminlte.min.css">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -39,8 +39,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- DataTables(Latest Version for all Datatables Plugins) -->
-<link href="../assets/plugins/DataTables/datatables.min.css" rel="stylesheet">
-<script src="../assets/plugins/DataTables/datatables.min.js"></script>
+<link href="../plugins/DataTables/datatables.min.css" rel="stylesheet">
+<script src="../plugins/DataTables/datatables.min.js"></script>
 
 <link rel="stylesheet" href="../assets/css/main.css">
 <script src="../config/config.js"></script>
