@@ -62,7 +62,7 @@
                     class="img-circle elevation-2" alt="Admin Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block text-capitalize text-success font-weight-medium">
+                <a href="#" class="d-block text-capitalize font-weight-medium">
                     ADMIN
                     <span id="adminLoggedId" data-id="<?php echo $_SESSION["adminLogged"]["id"]; ?>">
                         <?php echo $_SESSION["adminLogged"]["id"]; ?>

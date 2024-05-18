@@ -26,7 +26,7 @@
                                 placeholder="Username" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-solid fa-user"></span>
+                                    <span class="fas fa-solid fa-user text-success"></span>
                                 </div>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                                 placeholder="Password" required>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
+                                    <span class="fas fa-lock text-success"></span>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <a href="#">I forgot my password</a>
                     </p>
                     <p class="mb-0">
-                        <a href="../index.php">Visit Client Page</a>
+                        <a href="../index.php" class="badge badge-success">Visit Client Page</a>
                     </p>
                 </div>
 

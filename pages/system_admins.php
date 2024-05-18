@@ -483,6 +483,34 @@ include '../server/admin_login-verification.php';
                                 }
                             }
                         ]
+                    }, {
+                        extend: 'collection',
+                        text: '<i class="fas fa-filter"></i> Filter Admin Type',
+                        className: 'filter-btn',
+                        autoClose: true,
+                        buttons: [
+                            {
+                                text: 'Super Admin',
+                                action: function (e, dt, node, config) {
+                                    dt.column(4).search('Super Admin').draw();
+                                }
+                            }, {
+                                text: 'Admin', // Error: Same text appear as the same as the 'text'
+                                action: function (e, dt, node, config) {
+                                    dt.column(4).search('Admin').draw();
+                                }
+                            }, {
+                                text: 'Encoder',
+                                action: function (e, dt, node, config) {
+                                    dt.column(4).search('Encoder').draw();
+                                }
+                            }, {
+                                text: 'Clear Filter',
+                                action: function (e, dt, node, config) {
+                                    dt.column(4).search('').draw();
+                                }
+                            }
+                        ]
                     }],
                     dom: 'Bfrtip',
                     responsive: true,
@@ -674,6 +702,8 @@ include '../server/admin_login-verification.php';
                             $('#updateDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
 
                             if ($('#updateId_systemAdmin').val() == $('#adminLoggedId').data('id')) {
+                                $('#updateType_systemAdmin').attr('disabled', true);
+                                $('#updateSystemAccess_systemAdmin').attr('disabled', true);
                                 $('#updateSubmitBtn_admin').attr('disabled', true);
                             }
                         }
