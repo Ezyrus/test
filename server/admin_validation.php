@@ -19,16 +19,32 @@ if ($selectAdminLoginQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `
             $rowSelectAdminLoginQuery = $resultSelectAdminLoginQuery->fetch_assoc();
 
             if (password_verify($admin_password, $rowSelectAdminLoginQuery["password"])) {
-                session_start();
-                $_SESSION["adminLogged"] = array(
-                    "username" => $rowSelectAdminLoginQuery["username"],
-                    "fullname" => $rowSelectAdminLoginQuery["fullname"],
-                    "system_access" => $rowSelectAdminLoginQuery["system_access"],
-                    "type" => $rowSelectAdminLoginQuery["type"],
-                    "picture" => $rowSelectAdminLoginQuery["picture"]
-                );
-                $response['status'] = true;
-                $response['message'] = "Login Successful";
+                $selectAdminLoginQuery->close();
+
+                if($selectAdminVerifiedQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `username` = ? AND `system_access` = 0 ")) {
+                    $selectAdminVerifiedQuery->bind_param("s", $rowSelectAdminLoginQuery["username"]);
+                    $selectAdminVerifiedQuery->execute();
+                    $resultSelectAdminVerifiedQuery = $selectAdminVerifiedQuery->get_result();
+
+                    if ($resultSelectAdminVerifiedQuery->num_rows > 0) {
+                        $response['message'] = "You currently dont have the permission to access the System.";
+                    } else {
+                        session_start();
+                        $_SESSION["adminLogged"] = array(
+                            "id" => $rowSelectAdminLoginQuery["id"],
+                            "username" => $rowSelectAdminLoginQuery["username"],
+                            "fullname" => $rowSelectAdminLoginQuery["fullname"],
+                            "system_access" => $rowSelectAdminLoginQuery["system_access"],
+                            "type" => $rowSelectAdminLoginQuery["type"],
+                            "picture" => $rowSelectAdminLoginQuery["picture"]
+                        );
+                        $response['status'] = true;
+                        $response['message'] = "Login Successful";
+                    }
+                    
+                }
+                $selectAdminVerifiedQuery->close();
+
             } else {
                 $response['message'] = 'Incorrect Password';
             }

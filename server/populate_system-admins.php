@@ -5,14 +5,15 @@ $response = array(
     'system_admins' => ''
   );
   
-$query = "SELECT * FROM `system_admins` ORDER BY `id` DESC";
-$result = $db->query($query);
+$selectSystemAdminsQuery = $db->prepare("SELECT * FROM `system_admins` ORDER BY `id` DESC");
+$selectSystemAdminsQuery->execute();
+$resultSelectSystemAdminsQuery = $selectSystemAdminsQuery->get_result();
 
 $systemAdmins = array();
-while ($row = $result->fetch_assoc()) {
+while ($row = $resultSelectSystemAdminsQuery->fetch_assoc()) {
     $systemAdmins[] = $row;
 }
-
+$resultSelectSystemAdminsQuery->close();
 $response['system_admins'] = $systemAdmins;
 echo json_encode($response);
 ?>

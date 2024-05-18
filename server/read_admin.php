@@ -26,6 +26,7 @@ if ($readAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `id` = ?
         $response['message'] = 'An error occurred while executing Query: ' . $readAdminQuery->error;
         http_response_code(500); // Server Error
     }
+    $readAdminQuery->close();
 } else {
     $response['message'] = 'An error occurred while preparing Query: ' . $db->error;
     http_response_code(500); // Server Error

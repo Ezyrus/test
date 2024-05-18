@@ -22,7 +22,7 @@ if (!empty($updatePictureName_systemAdmin)) {
     
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
-            $response["message"] = "Admin Updated.";
+            $response["message"] = "Admin Updated";
         } else {
             $response["message"] = 'An error occurred while executing Query: ' . $updateAdminQuery->error;
             http_response_code(500); // Server Error
@@ -38,7 +38,7 @@ if (!empty($updatePictureName_systemAdmin)) {
     
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
-            $response["message"] = "Admin has been successfully updated.";
+            $response["message"] = "Admin Updated";
         } else {
             $response["message"] = 'An error occurred while executing Query: ' . $updateAdminQuery->error;
             http_response_code(500); // Server Error

@@ -18,6 +18,7 @@ if ($deleteAdminQuery = $db->prepare("DELETE FROM `system_admins` WHERE `id` = ?
         $response["message"] = 'An error occurred while executing Query: ' . $deleteAdminQuery->error;
         http_response_code(500); // Server Error
     }
+    $deleteAdminQuery->close();
 } else {
     $response["message"] = 'An error occurred while preparing Query: ' . $db->error;
     http_response_code(500); // Server Error
