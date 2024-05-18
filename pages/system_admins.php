@@ -674,8 +674,7 @@ include '../server/admin_login-verification.php';
                             $('#updateDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
 
                             if ($('#updateId_systemAdmin').val() == $('#adminLoggedId').data('id')) {
-                                $('#updateType_systemAdmin').attr('disabled', true);
-                                $('#updateSystemAccess_systemAdmin').attr('disabled', true);
+                                $('#updateSubmitBtn_admin').attr('disabled', true);
                             }
                         }
                     },
