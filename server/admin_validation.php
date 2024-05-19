@@ -31,7 +31,7 @@ if ($selectAdminLoginQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `
                     } else {
                         session_start();
                         $_SESSION["adminLogged"] = array(
-                            "id" => $rowSelectAdminLoginQuery["id"],
+                            "admin_id" => $rowSelectAdminLoginQuery["admin_id"],
                             "username" => $rowSelectAdminLoginQuery["username"],
                             "fullname" => $rowSelectAdminLoginQuery["fullname"],
                             "system_access" => $rowSelectAdminLoginQuery["system_access"],

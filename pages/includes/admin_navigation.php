@@ -64,8 +64,8 @@
             <div class="info">
                 <a href="#" class="d-block text-capitalize font-weight-medium">
                     ADMIN
-                    <span id="adminLoggedId" data-id="<?php echo $_SESSION["adminLogged"]["id"]; ?>">
-                        <?php echo $_SESSION["adminLogged"]["id"]; ?>
+                    <span id="adminLoggedId" data-id="<?php echo $_SESSION["adminLogged"]["admin_id"]; ?>">
+                        <?php echo $_SESSION["adminLogged"]["admin_id"]; ?>
                     </span> | <?php echo $_SESSION["adminLogged"]["username"]; ?>
                 </a>
             </div>
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="admin_sessions.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-user-clock"></i>
                         <p>Admin Sessions</p>
                     </a>

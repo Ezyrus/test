@@ -5,7 +5,7 @@ $response = array(
     'system_admins' => ''
   );
   
-$selectSystemAdminsQuery = $db->prepare("SELECT * FROM `system_admins` ORDER BY `id` DESC");
+$selectSystemAdminsQuery = $db->prepare("SELECT * FROM `system_admins` ORDER BY `admin_id` DESC");
 $selectSystemAdminsQuery->execute();
 $resultSelectSystemAdminsQuery = $selectSystemAdminsQuery->get_result();
 

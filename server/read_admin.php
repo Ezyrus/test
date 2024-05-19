@@ -8,7 +8,7 @@ $response = array(
 
 $id_systemAdmin = $_POST["id_systemAdmin"];
 
-if ($readAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `id` = ? ")) {
+if ($readAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `admin_id` = ? ")) {
     $readAdminQuery->bind_param("i", $id_systemAdmin);
     
     if ($readAdminQuery->execute()) {

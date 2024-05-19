@@ -8,7 +8,7 @@ $response = array(
 
 $id_systemAdmin = $_POST['id_systemAdmin'];
 
-if ($deleteAdminQuery = $db->prepare("DELETE FROM `system_admins` WHERE `id` = ?")) {
+if ($deleteAdminQuery = $db->prepare("DELETE FROM `system_admins` WHERE `admin_id` = ?")) {
     $deleteAdminQuery->bind_param('i', $id_systemAdmin);
 
     if ($deleteAdminQuery->execute()) {

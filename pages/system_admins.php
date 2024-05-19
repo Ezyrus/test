@@ -114,7 +114,6 @@ include '../server/admin_login-verification.php';
                         </div>
 
                     </div>
-
                 </section>
 
             </div>
@@ -521,7 +520,7 @@ include '../server/admin_login-verification.php';
                         dataSrc: 'system_admins'
                     },
                     columns: [{
-                        data: 'id',
+                        data: 'admin_id',
                         render: function (data, type, row) {
                             return 'ADMIN' + data;
                         }
@@ -571,9 +570,9 @@ include '../server/admin_login-verification.php';
                         data: null,
                         render: function (data, type, row) {
                             return '<div class="btn-group" role="group" aria-label="System Administrator Actions">' +
-                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.id + '" data-role="readBtn_systemAdmin"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmin" data-id="' + row.id + '" data-role="updateBtn_systemAdmin"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-danger" data-id="' + row.id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.admin_id + '" data-role="readBtn_systemAdmin"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-primary" data-bs-toggle="modal" data-bs-target="#updateModal_systemAdmin" data-id="' + row.admin_id + '" data-role="updateBtn_systemAdmin"><i class="fa-solid fa-pen-to-square fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-danger" data-id="' + row.admin_id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
                                 '</div>';
                         }
                     }]
@@ -666,7 +665,7 @@ include '../server/admin_login-verification.php';
                             $('#readPictureFileName').text(responseData.systemAdminsData.picture);
                             $('#readFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
                             $('#readUsername_systemAdmin').val(responseData.systemAdminsData.username);
-                            $('#readId_systemAdmin').val(responseData.systemAdminsData.id);
+                            $('#readId_systemAdmin').val(responseData.systemAdminsData.admin_id);
                             $('#readType_systemAdmin').val(responseData.systemAdminsData.type);
                             $('#readSystemAccess_systemAdmin').val(responseData.systemAdminsData.system_access)
                             $('#readAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
@@ -694,7 +693,7 @@ include '../server/admin_login-verification.php';
                             $('#updatePictureFileName').text(responseData.systemAdminsData.picture);
                             $('#updateFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
                             $('#updateUsername_systemAdmin').val(responseData.systemAdminsData.username);
-                            $('#updateId_systemAdmin').val(responseData.systemAdminsData.id);
+                            $('#updateId_systemAdmin').val(responseData.systemAdminsData.admin_id);
                             $('#updateType_systemAdmin').val(responseData.systemAdminsData.type);
                             $('#updateSystemAccess_systemAdmin').val(responseData.systemAdminsData.system_access)
                             $('#updateAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);

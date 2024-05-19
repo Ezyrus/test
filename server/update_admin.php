@@ -17,7 +17,7 @@ $updateType_systemAdmin = $_POST["updateType_systemAdmin"];
 $updateSystemAccess_systemAdmin = $_POST["updateSystemAccess_systemAdmin"];
 
 if (!empty($updatePictureName_systemAdmin)) {
-    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET `picture` = ?, `fullname` = ?, `type` = ?, `system_access` = ? WHERE `id` = ? ")) {
+    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET `picture` = ?, `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
         $updateAdminQuery->bind_param("ssssi", $updatePictureName_systemAdmin, $updateFullName_systemAdmin, $updateType_systemAdmin, $updateSystemAccess_systemAdmin, $updateId_systemAdmin);
     
         if ($updateAdminQuery->execute()) {
@@ -33,7 +33,7 @@ if (!empty($updatePictureName_systemAdmin)) {
         http_response_code(500); // Server Error
     }
 } else {
-    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET  `fullname` = ?, `type` = ?, `system_access` = ? WHERE `id` = ? ")) {
+    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET  `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
         $updateAdminQuery->bind_param("sssi", $updateFullName_systemAdmin, $updateType_systemAdmin, $updateSystemAccess_systemAdmin, $updateId_systemAdmin);
     
         if ($updateAdminQuery->execute()) {
