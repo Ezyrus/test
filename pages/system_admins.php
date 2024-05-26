@@ -244,7 +244,7 @@ include '../server/admin_login-verification.php';
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mb-2">
                                         <div class="col">
                                             <label for="readAddedBy_systemAdmin">Added By</label>
                                             <input type="text" class="form-control text-capitalize"
@@ -264,10 +264,6 @@ include '../server/admin_login-verification.php';
 
                                 </div>
                             </div>
-
-
-
-
                         </div>
 
                         <div class="modal-footer justify-content-between bg-gray-light">
@@ -356,7 +352,7 @@ include '../server/admin_login-verification.php';
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <div class="row mb-2">
                                         <div class="col">
                                             <label for="updateAddedBy_systemAdmin">Added By</label>
                                             <input type="text" class="form-control text-capitalize"
@@ -421,6 +417,11 @@ include '../server/admin_login-verification.php';
                         className: 'reload-btn',
                         action: function (e, dt, node, config) {
                             $('#reloadOverlay').show();
+                            dt.search('')              // Clear global search
+                            dt.columns().search('')    // Clear individual column search
+                            dt.order([[0, 'asc']])     // Reset sorting to the first column (adjust as needed)
+                            dt.page('first')           // Reset pagination to the first page
+                            dt.draw(false);
                             $('#table_systemAdmins').DataTable().ajax.reload(function () { // Reload DataTable
                                 $('#reloadOverlay').hide();
                                 toastr.info("Table has been reloaded", "", {
