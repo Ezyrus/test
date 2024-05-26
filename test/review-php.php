@@ -53,6 +53,7 @@
 // 'away'=>array('Arthur', 'Daniel')
 // );
 
+
 // If else if statement:
 // if (condition) {
 //     code to be executed if condition is true;
@@ -73,7 +74,7 @@
 //   } while (condition is true);
 
 // For Loop:
-// for (init; test; increment) {
+// for (init; condition; increment) {
 //     code to be executed;
 //  }
 
@@ -120,4 +121,22 @@
 //     }
 //     echo $i . ' ';
 // }
+
+function groupByOwners(array $files): array
+{
+    $result = array();
+    foreach ($files as $file => $owner) {
+        $result[$owner][] = $file;
+    }
+    return $result;
+}
+
+$files = array(
+    "Input.txt" => "Randy",
+    "Code.py" => "Stan",
+    "Output.txt" => "Randy"
+);
+
+var_dump(groupByOwners($files));
+
 ?>

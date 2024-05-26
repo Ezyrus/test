@@ -14,3 +14,16 @@ function formatDateTime(dateTimeString) {
     };
     return dateTime.toLocaleString('en-US', options);
 }
+
+function createLogs(admin_id, action, description) {
+    $.ajax({
+        type: 'POST',
+        url: '../server/create_system-logs.php',
+        data: {
+            admin_id: admin_id,
+            action: action,
+            description: description
+        },
+        dataType: 'json'
+    })
+}

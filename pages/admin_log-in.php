@@ -52,7 +52,7 @@
                         <a href="#">I forgot my password</a>
                     </p>
                     <p class="mb-0">
-                        <a href="../index.php" class="badge badge-success">Visit Client Page</a>
+                        <a href="../index.php" class="badge badge-success">Visit Landing Page</a>
                     </p>
                 </div>
 
@@ -71,6 +71,8 @@
                         if (responseData.status) {
                             toastr.success(responseData.message)
 
+                            createLogs(responseData.logsData.admin_id, responseData.logsData.action, responseData.logsData.description)
+                            
                             $('body').fadeOut(2500, function () {
                                 location.replace('dashboard.php');
                             });

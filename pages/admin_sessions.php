@@ -89,53 +89,53 @@ include '../server/admin_login-verification.php';
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form id="readForm_systemAdmin">
+                    <form id="readForm_adminSessions">
 
                         <div class="modal-header bg-secondary">
-                            <h1 class="modal-title fs-5 text-center">View System Administrator</h1>
+                            <h1 class="modal-title fs-5 text-center">View Admin Sessions</h1>
                         </div>
 
                         <div class="modal-body">
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="readPicturePreview_systemAdmin">Picture: <span id="readPictureFileName"
+                                    <label for="readPicturePreview_adminSessions">Picture: <span id="readPictureFileName"
                                             class="text-muted font-weight-normal font-italic"></span></label>
-                                    <img alt="Admin Picture" id="readPicturePreview_systemAdmin" class="w-100 mb-2">
+                                    <img alt="Admin Picture" id="readPicturePreview_adminSessions" class="w-100 mb-2">
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="readFullName_systemAdmin">Full Name</label>
+                                    <label for="readFullName_adminSessions">Full Name</label>
                                     <input type="text" class="form-control text-capitalize"
-                                        id="readFullName_systemAdmin" name="readFullName_systemAdmin"
+                                        id="readFullName_adminSessions" name="readFullName_adminSessions"
                                         placeholder="Full Name" readonly>
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col-7">
-                                    <label for="readUsername_systemAdmin">Username</label>
-                                    <input type="text" class="form-control" id="readUsername_systemAdmin"
-                                        name="readUsername_systemAdmin" placeholder="Username" readonly>
+                                    <label for="readUsername_adminSessions">Username</label>
+                                    <input type="text" class="form-control" id="readUsername_adminSessions"
+                                        name="readUsername_adminSessions" placeholder="Username" readonly>
                                 </div>
 
                                 <div class="col-5">
-                                    <label for="readId_systemAdmin">Admin ID</label>
-                                    <input type="text" class="form-control" id="readId_systemAdmin"
-                                        name="readId_systemAdmin" placeholder="ID" readonly>
+                                    <label for="readId_adminSessions">Admin ID</label>
+                                    <input type="text" class="form-control" id="readId_adminSessions"
+                                        name="readId_adminSessions" placeholder="ID" readonly>
                                 </div>
                             </div>
 
                             <div class="row mb-2">
                                 <div class="col">
-                                    <label for="readType_systemAdmin">Type
+                                    <label for="readType_adminSessions">Type
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
                                             title="Admin Access Type">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
-                                    <select class="form-control" id="readType_systemAdmin" name="readType_systemAdmin"
+                                    <select class="form-control" id="readType_adminSessions" name="readType_adminSessions"
                                         readonly disabled>
                                         <option value="ad3">Encoder</option>
                                         <option value="ad2">Admin</option>
@@ -144,14 +144,14 @@ include '../server/admin_login-verification.php';
                                 </div>
 
                                 <div class="col">
-                                    <label for="readSystemAccess_systemAdmin">System Access
+                                    <label for="readSystemAccess_adminSessions">System Access
                                         <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
                                             title="Admin System Permission">
                                             <i class="fas fa-question-circle"></i>
                                         </span>
                                     </label>
-                                    <select class="form-control" id="readSystemAccess_systemAdmin"
-                                        name="readSystemAccess_systemAdmin" readonly disabled>
+                                    <select class="form-control" id="readSystemAccess_adminSessions"
+                                        name="readSystemAccess_adminSessions" readonly disabled>
                                         <option value="1">Authorize Access</option>
                                         <option value="0">Revoke Access</option>
                                     </select>
@@ -160,15 +160,15 @@ include '../server/admin_login-verification.php';
 
                             <div class="row">
                                 <div class="col-5">
-                                    <label for="readAddedBy_systemAdmin">Added By</label>
-                                    <input type="text" class="form-control text-capitalize" id="readAddedBy_systemAdmin"
-                                        name="readAddedBy_systemAdmin" placeholder="Added By" readonly>
+                                    <label for="readAddedBy_adminSessions">Added By</label>
+                                    <input type="text" class="form-control text-capitalize" id="readAddedBy_adminSessions"
+                                        name="readAddedBy_adminSessions" placeholder="Added By" readonly>
                                 </div>
 
                                 <div class="col-7">
-                                    <label for="readDateRegistered_systemAdmin">Date Registered </label>
-                                    <input type="text" class="form-control" id="readDateRegistered_systemAdmin"
-                                        name="readDateRegistered_systemAdmin" placeholder="Date Registered" readonly>
+                                    <label for="readDateRegistered_adminSessions">Date Registered </label>
+                                    <input type="text" class="form-control" id="readDateRegistered_adminSessions"
+                                        name="readDateRegistered_adminSessions" placeholder="Date Registered" readonly>
                                 </div>
                             </div>
                         </div>
@@ -274,8 +274,8 @@ include '../server/admin_login-verification.php';
                         data: null,
                         render: function (data, type, row) {
                             return '<div class="btn-group" role="group" aria-label="System Administrator Actions">' +
-                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_systemAdmin" data-id="' + row.session_id + '" data-role="readBtn_systemAdmin"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
-                                '<button type="button" class="btn bg-danger" data-id="' + row.session_id + '" data-role="deleteBtn_systemAdmin"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-secondary" data-bs-toggle="modal" data-bs-target="#readModal_adminSessions" data-id="' + row.session_id + '" data-role="readBtn_adminSessions"><i class="fa-solid fa-eye fa-xl" style="color: white;"></i></button>' +
+                                '<button type="button" class="btn bg-danger" data-id="' + row.session_id + '" data-role="deleteBtn_adminSessions"><i class="fa-solid fa-trash fa-xl" style="color: white;"></i></button>' +
                                 '</div>';
                         }
                     }]
@@ -283,26 +283,26 @@ include '../server/admin_login-verification.php';
             });
 
 
-            // Read Admin: Populate Fields
-            $(document).on('click', 'button[data-role=readBtn_systemAdmin]', function () {
+            // Read Session: Populate Fields
+            $(document).on('click', 'button[data-role=readBtn_adminSessions]', function () {
                 $.ajax({
                     url: '../server/read_admin.php',
                     type: 'POST',
                     data: {
-                        "id_systemAdmin": $(this).attr('data-id'),
+                        "id_adminSessions": $(this).attr('data-id'),
                     },
                     dataType: 'json',
                     success: function (responseData) {
                         if (responseData.status) {
-                            $('#readPicturePreview_systemAdmin').attr('src', '../assets/img/admin_pictures/' + responseData.systemAdminsData.picture);
-                            $('#readPictureFileName').text(responseData.systemAdminsData.picture);
-                            $('#readFullName_systemAdmin').val(responseData.systemAdminsData.fullname);
-                            $('#readUsername_systemAdmin').val(responseData.systemAdminsData.username);
-                            $('#readId_systemAdmin').val(responseData.systemAdminsData.admin_id);
-                            $('#readType_systemAdmin').val(responseData.systemAdminsData.type);
-                            $('#readSystemAccess_systemAdmin').val(responseData.systemAdminsData.system_access)
-                            $('#readAddedBy_systemAdmin').val("Admin " + responseData.systemAdminsData.added_by);
-                            $('#readDateRegistered_systemAdmin').val(formatDateTime(responseData.systemAdminsData.date_registered));
+                            $('#readPicturePreview_adminSessions').attr('src', '../assets/img/admin_pictures/' + responseData.adminSessionssData.picture);
+                            $('#readPictureFileName').text(responseData.adminSessionssData.picture);
+                            $('#readFullName_adminSessions').val(responseData.adminSessionssData.fullname);
+                            $('#readUsername_adminSessions').val(responseData.adminSessionssData.username);
+                            $('#readId_adminSessions').val(responseData.adminSessionssData.admin_id);
+                            $('#readType_adminSessions').val(responseData.adminSessionssData.type);
+                            $('#readSystemAccess_adminSessions').val(responseData.adminSessionssData.system_access)
+                            $('#readAddedBy_adminSessions').val("Admin " + responseData.adminSessionssData.added_by);
+                            $('#readDateRegistered_adminSessions').val(formatDateTime(responseData.adminSessionssData.date_registered));
                         }
                     },
                     error: function (xhr, status, error) {

@@ -9,7 +9,7 @@
             <a href="#" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="../index.php" class="nav-link">Visit Client</a>
+            <a href="../index.php" class="nav-link">Visit Landing Page</a>
         </li>
     </ul>
 
@@ -106,13 +106,13 @@
                 <li class="nav-item">
                     <a href="admin_sessions.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-user-clock"></i>
-                        <p>Admin Sessions</p>
+                        <p>Admin Sessions <span class="badge badge-warning right">0</span></p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="system_logs.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-clock-rotate-left"></i>
-                        <p>Logs</p>
+                        <p>Logs <span class="badge badge-warning right">0</span></p>
                     </a>
                 </li>
                 <li class="nav-item">

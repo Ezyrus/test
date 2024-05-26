@@ -53,54 +53,19 @@ include '../server/admin_login-verification.php';
                                     </div>
 
                                     <div class="card-body">
-                                        <table id="table_systemAdmins" class="table responsive">
-                                            <thead>
+                                        <table id="table_systemAdmins" class="table responsive table-hover">
+                                            <thead class="thead-light">
                                                 <tr>
-                                                    <th>Admin ID</th>
-                                                    <th>Picture</th>
-                                                    <th>Full Name</th>
+                                                    <th class="text-nowrap" style="width: 100px;">Admin ID</th>
+                                                    <!-- <th>Picture</th> -->
+                                                    <th class="text-nowrap">Full Name</th>
                                                     <th>Username</th>
                                                     <th>Type</th>
-                                                    <th>System Access</th>
-                                                    <th>Added By</th>
-                                                    <th>Date Registered</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-                                            </tbody>
-
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="card card-primary card-secondary">
-                                    <div class="overlay dark" id="reloadOverlay">
-                                        <i class="fas fa-3x fa-sync-alt"></i>
-                                    </div>
-
-                                    <div class="card-header bg-danger">
-                                        <h5 class="card-title">Archived Administrators</h5>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <table id="table_systemAdminsArchive" class="table responsive">
-                                            <thead>
-                                                <tr>
-                                                    <th>Admin ID</th>
-                                                    <th>Picture</th>
-                                                    <th>Full Name</th>
-                                                    <th>Username</th>
-                                                    <th>Type</th>
-                                                    <th>Is Active?</th>
-                                                    <th>Added By</th>
-                                                    <th>Date Registered</th>
-                                                    <th>Actions</th>
+                                                    <th class="text-nowrap">System Access</th>
+                                                    <th class="text-nowrap">Added By</th>
+                                                    <th class="text-nowrap" style="width: 200px;">Date
+                                                        Registered</th>
+                                                    <th style="width: 200px;">Actions</th>
                                                 </tr>
                                             </thead>
 
@@ -208,7 +173,7 @@ include '../server/admin_login-verification.php';
         <!--- Read Administrator ----->
         <div class="modal fade" id="readModal_systemAdmin" tabindex="-1" data-bs-backdrop="static" role="dialog"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <form id="readForm_systemAdmin">
 
@@ -217,81 +182,92 @@ include '../server/admin_login-verification.php';
                         </div>
 
                         <div class="modal-body">
-                            <div class="row mb-2">
-                                <div class="col">
+                            <div class="row">
+                                <div class="col border border-3">
                                     <label for="readPicturePreview_systemAdmin">Picture: <span id="readPictureFileName"
                                             class="text-muted font-weight-normal font-italic"></span></label>
                                     <img alt="Admin Picture" id="readPicturePreview_systemAdmin" class="w-100 mb-2">
                                 </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label for="readFullName_systemAdmin">Full Name</label>
-                                    <input type="text" class="form-control text-capitalize"
-                                        id="readFullName_systemAdmin" name="readFullName_systemAdmin"
-                                        placeholder="Full Name" readonly>
-                                </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col-7">
-                                    <label for="readUsername_systemAdmin">Username</label>
-                                    <input type="text" class="form-control" id="readUsername_systemAdmin"
-                                        name="readUsername_systemAdmin" placeholder="Username" readonly>
-                                </div>
-
-                                <div class="col-5">
-                                    <label for="readId_systemAdmin">Admin ID</label>
-                                    <input type="text" class="form-control" id="readId_systemAdmin"
-                                        name="readId_systemAdmin" placeholder="ID" readonly>
-                                </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label for="readType_systemAdmin">Type
-                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin Access Type">
-                                            <i class="fas fa-question-circle"></i>
-                                        </span>
-                                    </label>
-                                    <select class="form-control" id="readType_systemAdmin" name="readType_systemAdmin"
-                                        readonly disabled>
-                                        <option value="ad3">Encoder</option>
-                                        <option value="ad2">Admin</option>
-                                        <option value="ad1">Super Admin</option>
-                                    </select>
-                                </div>
 
                                 <div class="col">
-                                    <label for="readSystemAccess_systemAdmin">System Access
-                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin System Permission">
-                                            <i class="fas fa-question-circle"></i>
-                                        </span>
-                                    </label>
-                                    <select class="form-control" id="readSystemAccess_systemAdmin"
-                                        name="readSystemAccess_systemAdmin" readonly disabled>
-                                        <option value="1">Authorize Access</option>
-                                        <option value="0">Revoke Access</option>
-                                    </select>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="readFullName_systemAdmin">Full Name</label>
+                                            <input type="text" class="form-control text-capitalize"
+                                                id="readFullName_systemAdmin" name="readFullName_systemAdmin"
+                                                placeholder="Full Name" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="readUsername_systemAdmin">Username</label>
+                                            <input type="text" class="form-control" id="readUsername_systemAdmin"
+                                                name="readUsername_systemAdmin" placeholder="Username" readonly>
+                                        </div>
+
+                                        <div class="col-5">
+                                            <label for="readId_systemAdmin">Admin ID</label>
+                                            <input type="text" class="form-control" id="readId_systemAdmin"
+                                                name="readId_systemAdmin" placeholder="ID" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="readType_systemAdmin">Type
+                                                <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                                    title="Admin Access Type">
+                                                    <i class="fas fa-question-circle"></i>
+                                                </span>
+                                            </label>
+                                            <select class="form-control" id="readType_systemAdmin"
+                                                name="readType_systemAdmin" readonly disabled>
+                                                <option value="ad3">Encoder</option>
+                                                <option value="ad2">Admin</option>
+                                                <option value="ad1">Super Admin</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="readSystemAccess_systemAdmin">System Access
+                                                <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                                    title="Admin System Permission">
+                                                    <i class="fas fa-question-circle"></i>
+                                                </span>
+                                            </label>
+                                            <select class="form-control" id="readSystemAccess_systemAdmin"
+                                                name="readSystemAccess_systemAdmin" readonly disabled>
+                                                <option value="1">Authorize Access</option>
+                                                <option value="0">Revoke Access</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="readAddedBy_systemAdmin">Added By</label>
+                                            <input type="text" class="form-control text-capitalize"
+                                                id="readAddedBy_systemAdmin" name="readAddedBy_systemAdmin"
+                                                placeholder="Added By" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="readDateRegistered_systemAdmin">Date Registered </label>
+                                            <input type="text" class="form-control" id="readDateRegistered_systemAdmin"
+                                                name="readDateRegistered_systemAdmin" placeholder="Date Registered"
+                                                readonly>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-5">
-                                    <label for="readAddedBy_systemAdmin">Added By</label>
-                                    <input type="text" class="form-control text-capitalize" id="readAddedBy_systemAdmin"
-                                        name="readAddedBy_systemAdmin" placeholder="Added By" readonly>
-                                </div>
 
-                                <div class="col-7">
-                                    <label for="readDateRegistered_systemAdmin">Date Registered </label>
-                                    <input type="text" class="form-control" id="readDateRegistered_systemAdmin"
-                                        name="readDateRegistered_systemAdmin" placeholder="Date Registered" readonly>
-                                </div>
-                            </div>
+
+
                         </div>
 
                         <div class="modal-footer justify-content-between bg-gray-light">
@@ -306,7 +282,7 @@ include '../server/admin_login-verification.php';
         <!--- Update Administrator ----->
         <div class="modal fade" id="updateModal_systemAdmin" tabindex="-1" data-bs-backdrop="static" role="dialog"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <form id="updateForm_systemAdmin">
 
@@ -315,83 +291,89 @@ include '../server/admin_login-verification.php';
                         </div>
 
                         <div class="modal-body">
-                            <div class="row mb-2">
-                                <div class="col">
+                            <div class="row">
+                                <div class="col border border-3">
                                     <label for="updatePicturePreview_systemAdmin">Picture: </label>
                                     <span id="updatePictureFileName"
                                         class="text-muted font-weight-normal font-italic"></span>
                                     <img alt="Admin Picture" id="updatePicturePreview_systemAdmin" class="w-100 mb-2">
-                                    <input type="file" class="form-control" id="updatePicture_systemAdmin"
+                                    <input type="file" class="form-control mb-3" id="updatePicture_systemAdmin"
                                         name="updatePicture_systemAdmin">
                                 </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label for="updateFullName_systemAdmin">Full Name</label>
-                                    <input type="text" class="form-control text-capitalize"
-                                        id="updateFullName_systemAdmin" name="updateFullName_systemAdmin"
-                                        placeholder="Full Name" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col-7">
-                                    <label for="updateUsername_systemAdmin">Username</label>
-                                    <input type="text" class="form-control" id="updateUsername_systemAdmin"
-                                        name="updateUsername_systemAdmin" placeholder="Username" readonly>
-                                </div>
-
-                                <div class="col-5">
-                                    <label for="updateId_systemAdmin">Admin ID</label>
-                                    <input type="text" class="form-control" id="updateId_systemAdmin"
-                                        name="updateId_systemAdmin" placeholder="ID" readonly>
-                                </div>
-                            </div>
-
-                            <div class="row mb-2">
-                                <div class="col">
-                                    <label for="updateType_systemAdmin">Type
-                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin Access Type">
-                                            <i class="fas fa-question-circle"></i>
-                                        </span>
-                                    </label>
-                                    <select class="form-control" id="updateType_systemAdmin"
-                                        name="updateType_systemAdmin" required>
-                                        <option value="ad3">Encoder</option>
-                                        <option value="ad2">Admin</option>
-                                        <option value="ad1">Super Admin</option>
-                                    </select>
-                                </div>
 
                                 <div class="col">
-                                    <label for="updateSystemAccess_systemAdmin">System Access
-                                        <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
-                                            title="Admin System Permission">
-                                            <i class="fas fa-question-circle"></i>
-                                        </span>
-                                    </label>
-                                    <select class="form-control" id="updateSystemAccess_systemAdmin"
-                                        name="updateSystemAccess_systemAdmin" required>
-                                        <option value="1">Authorize Access</option>
-                                        <option value="0">Revoke Access</option>
-                                    </select>
-                                </div>
-                            </div>
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="updateFullName_systemAdmin">Full Name</label>
+                                            <input type="text" class="form-control text-capitalize"
+                                                id="updateFullName_systemAdmin" name="updateFullName_systemAdmin"
+                                                placeholder="Full Name" required>
+                                        </div>
+                                    </div>
 
-                            <div class="row">
-                                <div class="col-5">
-                                    <label for="updateAddedBy_systemAdmin">Added By</label>
-                                    <input type="text" class="form-control text-capitalize"
-                                        id="updateAddedBy_systemAdmin" name="updateAddedBy_systemAdmin"
-                                        placeholder="Added By" readonly>
-                                </div>
+                                    <div class="row mb-2">
+                                        <div class="col-7">
+                                            <label for="updateUsername_systemAdmin">Username</label>
+                                            <input type="text" class="form-control" id="updateUsername_systemAdmin"
+                                                name="updateUsername_systemAdmin" placeholder="Username" readonly>
+                                        </div>
 
-                                <div class="col-7">
-                                    <label for="updateDateRegistered_systemAdmin">Date Registered </label>
-                                    <input type="text" class="form-control" id="updateDateRegistered_systemAdmin"
-                                        name="updateDateRegistered_systemAdmin" placeholder="Date Registered" readonly>
+                                        <div class="col-5">
+                                            <label for="updateId_systemAdmin">Admin ID</label>
+                                            <input type="text" class="form-control" id="updateId_systemAdmin"
+                                                name="updateId_systemAdmin" placeholder="ID" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-2">
+                                        <div class="col">
+                                            <label for="updateType_systemAdmin">Type
+                                                <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                                    title="Admin Access Type">
+                                                    <i class="fas fa-question-circle"></i>
+                                                </span>
+                                            </label>
+                                            <select class="form-control" id="updateType_systemAdmin"
+                                                name="updateType_systemAdmin" required>
+                                                <option value="ad3">Encoder</option>
+                                                <option value="ad2">Admin</option>
+                                                <option value="ad1">Super Admin</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="updateSystemAccess_systemAdmin">System Access
+                                                <span class="d-inline-block " tabindex="0" data-toggle="tooltip"
+                                                    title="Admin System Permission">
+                                                    <i class="fas fa-question-circle"></i>
+                                                </span>
+                                            </label>
+                                            <select class="form-control" id="updateSystemAccess_systemAdmin"
+                                                name="updateSystemAccess_systemAdmin" required>
+                                                <option value="1">Authorize Access</option>
+                                                <option value="0">Revoke Access</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="updateAddedBy_systemAdmin">Added By</label>
+                                            <input type="text" class="form-control text-capitalize"
+                                                id="updateAddedBy_systemAdmin" name="updateAddedBy_systemAdmin"
+                                                placeholder="Added By" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="updateDateRegistered_systemAdmin">Date Registered </label>
+                                            <input type="text" class="form-control"
+                                                id="updateDateRegistered_systemAdmin"
+                                                name="updateDateRegistered_systemAdmin" placeholder="Date Registered"
+                                                readonly>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -468,26 +450,26 @@ include '../server/admin_login-verification.php';
                             {
                                 text: 'Super Admin',
                                 action: function (e, dt, node, config) {
-                                    dt.column(4).search('Super Admin').draw();
+                                    dt.column(3).search('Super Admin').draw();
                                 }
                             }, {
                                 text: 'Admin', // Error: Same text appear as the same as the 'text'
                                 action: function (e, dt, node, config) {
-                                    dt.column(4).search('Admin').draw();
+                                    dt.column(3).search('Admin').draw();
                                 }
                             }, {
                                 text: 'Encoder',
                                 action: function (e, dt, node, config) {
-                                    dt.column(4).search('Encoder').draw();
+                                    dt.column(3).search('Encoder').draw();
                                 }
                             }, {
                                 text: 'Clear Filter',
                                 action: function (e, dt, node, config) {
-                                    dt.column(4).search('').draw();
+                                    dt.column(3).search('').draw();
                                 }
                             }
                         ]
-                    }, { 
+                    }, {
                         extend: 'collection',
                         text: '<i class="fas fa-filter"></i> Filter System Access',
                         className: 'filter-btn',
@@ -496,17 +478,17 @@ include '../server/admin_login-verification.php';
                             {
                                 text: 'Authorized',
                                 action: function (e, dt, node, config) {
-                                    dt.column(5).search('Authorized').draw();
+                                    dt.column(4).search('Authorized').draw();
                                 }
                             }, {
                                 text: 'Revoked Access',
                                 action: function (e, dt, node, config) {
-                                    dt.column(5).search('Revoked Access').draw();
+                                    dt.column(4).search('Revoked Access').draw();
                                 }
                             }, {
                                 text: 'Clear Filter',
                                 action: function (e, dt, node, config) {
-                                    dt.column(5).search('').draw();
+                                    dt.column(4).search('').draw();
                                 }
                             }
                         ]
@@ -522,14 +504,16 @@ include '../server/admin_login-verification.php';
                     columns: [{
                         data: 'admin_id',
                         render: function (data, type, row) {
-                            return 'ADMIN' + data;
+                            return ' <span class="badge badge-secondary">ADMIN' + data + "</span>";
                         }
-                    }, {
-                        data: 'picture',
-                        render: function (data, type, row) {
-                            return '<img src="../assets/img/admin_pictures/' + data + '" width="100" alt="Admin Picture">';
-                        }
-                    }, {
+                    }
+                        // , {
+                        //     data: 'picture',
+                        //     render: function (data, type, row) {
+                        //         return '<img src="../assets/img/admin_pictures/' + data + '" width="100" alt="Admin Picture">';
+                        //     }
+                        // }
+                        , {
                         data: 'fullname',
                         render: function (data, type, row) {
                             return data.charAt(0).toUpperCase() + data.slice(1);
@@ -757,12 +741,13 @@ include '../server/admin_login-verification.php';
             })
 
             $(document).on('click', 'button[data-role=deleteBtn_systemAdmin]', function () {
+                var id_systemAdmin = $(this).attr('data-id');
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    text: "You won't be able to retrieve ADMIN" + id_systemAdmin + " after doing this action.",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, delete it!",
+                    confirmButtonText: "Yes, delete ADMIN " + id_systemAdmin + "!",
                     cancelButtonText: "No, cancel!",
                     reverseButtons: true,
                 }).then((result) => {

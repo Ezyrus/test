@@ -30,16 +30,21 @@ if ($selectAdminLoginQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `
                         $response['message'] = "You currently dont have the permission to access the System.";
                     } else {
                         session_start();
-                        $_SESSION["adminLogged"] = array(
+                        $_SESSION["adminLogged"] = array(   
                             "admin_id" => $rowSelectAdminLoginQuery["admin_id"],
-                            "username" => $rowSelectAdminLoginQuery["username"],
+                            "picture" => $rowSelectAdminLoginQuery["picture"],
                             "fullname" => $rowSelectAdminLoginQuery["fullname"],
-                            "system_access" => $rowSelectAdminLoginQuery["system_access"],
+                            "username" => $rowSelectAdminLoginQuery["username"],
                             "type" => $rowSelectAdminLoginQuery["type"],
-                            "picture" => $rowSelectAdminLoginQuery["picture"]
+                            "system_access" => $rowSelectAdminLoginQuery["system_access"]
                         );
                         $response['status'] = true;
                         $response['message'] = "Login Successful";
+                        $response['logsData'] = array(
+                            "admin_id" => $rowSelectAdminLoginQuery["admin_id"],
+                            "action" => "login",
+                            "description" => $rowSelectAdminLoginQuery["username"] . " had logged in to the system."
+                        );
                     }
                     
                 }
