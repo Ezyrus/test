@@ -45,6 +45,11 @@ if (!empty($updatePictureName_systemAdmin)) {
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
             $response["message"] = "Admin Updated";
+            $response['logsData'] = array(
+                "admin_id" => $_SESSION["adminLogged"]["admin_id"],
+                "action" => "update",
+                "description" => $_SESSION["adminLogged"]["username"] . " update admin ADMIN" . $updateId_systemAdmin . " in Admin Table."
+            );
         } else {
             $response["message"] = 'An error occurred while executing Query: ' . $updateAdminQuery->error;
             http_response_code(500); // Server Error

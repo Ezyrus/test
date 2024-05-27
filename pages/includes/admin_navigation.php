@@ -112,7 +112,7 @@
                 <li class="nav-item">
                     <a href="system_logs.php" class="nav-link">
                         <i class="nav-icon fa-solid fa-clock-rotate-left"></i>
-                        <p>Logs <span class="badge badge-warning right">0</span></p>
+                        <p>Logs <span class="badge badge-success right">1</span></p>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -127,8 +127,6 @@
                         <p>Logout <span class="badge badge-success right">1</span></p>
                     </a>
                 </li>
-                
-
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

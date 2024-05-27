@@ -41,7 +41,7 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
         $response['logsData'] = array(
           "admin_id" => $_SESSION["adminLogged"]["admin_id"],
           "action" => "create",
-          "description" => $_SESSION["adminLogged"]["username"] . " created admin " . $createUsername_systemAdmin . " in Admin Table."
+          "description" => $_SESSION["adminLogged"]["username"] . " created admin account for " . $createUsername_systemAdmin . " in Admin Table."
       );
       } else {
         $response['message'] = 'An error occurred while executing Query: ' . $insertAdminQuery->error;

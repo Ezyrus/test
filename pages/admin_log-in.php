@@ -11,8 +11,8 @@
     <body class="hold-transition login-page">
 
         <div class="login-box">
+            
             <div class="card card-outline card-success">
-
                 <div class="card-header text-center">
                     <a href="#" class="h1"><b>Your</b>System</a>
                 </div>
@@ -55,8 +55,8 @@
                         <a href="../index.php" class="badge badge-success">Visit Landing Page</a>
                     </p>
                 </div>
-
             </div>
+
         </div>
 
         <script>
