@@ -8,7 +8,7 @@ $response = array(
 $systemLogsType = $_GET["systemLogsType"];
 
 if ($systemLogsType == "logInLogOut") {
-  $selectSystemLogsQuery = $db->prepare("SELECT system_logs.logs_id, system_admins.fullname, system_logs.action, system_logs.description, system_logs.date FROM `system_logs` INNER JOIN `system_admins` ON system_logs.admin_id = system_admins.admin_id WHERE system_logs.action = 'login' OR system_logs.action = 'logout' ORDER BY `date` DESC ");
+  $selectSystemLogsQuery = $db->prepare("SELECT system_logs.logs_id, system_admins.fullname, system_logs.action, system_logs.description, system_logs.date FROM `system_logs` INNER JOIN `system_admins` ON system_logs.admin_id = system_admins.admin_id WHERE system_logs.action = 'login' OR system_logs.action = 'logout' ORDER BY `logs_id` DESC ");
   $selectSystemLogsQuery->execute();
   $resultSelectSystemLogsQuery = $selectSystemLogsQuery->get_result();
 

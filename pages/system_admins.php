@@ -618,6 +618,8 @@ include '../server/admin_login-verification.php';
                             $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                 $('#reloadOverlay').hide();
                                 toastr.success(responseData.message)
+
+                                createLogs(responseData.logsData.admin_id, responseData.logsData.action, responseData.logsData.description)
                             });
                             $('#createModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
@@ -626,10 +628,6 @@ include '../server/admin_login-verification.php';
                         }
                     },
                     error: function (xhr, status, error) {
-                        // console.error("Xhr: ", xhr);
-                        // console.error("Status: ", status); //"error", "abort", "timeout"
-                        // console.error("Error: ", error);
-
                         toastr.error("Error occured please contact developers immediately.")
                     }
                 })
@@ -730,6 +728,8 @@ include '../server/admin_login-verification.php';
                             $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                 $('#reloadOverlay').hide();
                                 toastr.success(responseData.message);
+
+                                createLogs(responseData.logsData.admin_id, responseData.logsData.action, responseData.logsData.description)
                             });
                             $('#updateModal_systemAdmin').modal('hide'); // Hide modal
                             $(this).trigger("reset"); // Reset form
@@ -742,13 +742,13 @@ include '../server/admin_login-verification.php';
             })
 
             $(document).on('click', 'button[data-role=deleteBtn_systemAdmin]', function () {
-                var id_systemAdmin = $(this).attr('data-id');
+                var deleteId_systemAdmin = $(this).attr('data-id');
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to retrieve ADMIN" + id_systemAdmin + " after doing this action.",
+                    text: "You won't be able to retrieve ADMIN" + deleteId_systemAdmin + " after doing this action.",
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, delete ADMIN " + id_systemAdmin + "!",
+                    confirmButtonText: "Yes, delete ADMIN " + deleteId_systemAdmin + "!",
                     cancelButtonText: "No, cancel!",
                     reverseButtons: true,
                 }).then((result) => {
@@ -757,7 +757,7 @@ include '../server/admin_login-verification.php';
                             url: '../server/delete_admin.php',
                             type: 'POST',
                             data: {
-                                "id_systemAdmin": $(this).attr('data-id')
+                                "deleteId_systemAdmin": deleteId_systemAdmin
                             },
                             dataType: 'json',
                             success: function (responseData) {
@@ -766,6 +766,8 @@ include '../server/admin_login-verification.php';
                                     $('#table_systemAdmins').DataTable().ajax.reload(function () {
                                         $('#reloadOverlay').hide();
                                         toastr.success(responseData.message);
+
+                                        createLogs(responseData.logsData.admin_id, responseData.logsData.action, responseData.logsData.description)
                                     });
                                 } else {
                                     toastr.error(responseData.message);

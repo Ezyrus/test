@@ -58,7 +58,8 @@ include '../server/admin_login-verification.php';
                                                 <tr>
                                                     <th class="text-center text-nowrap" style="width: 50px;">Logs ID
                                                     </th>
-                                                    <th class="text-center text-nowrap" style="width: 100px;">Performed By</th>
+                                                    <th class="text-center text-nowrap" style="width: 100px;">Performed
+                                                        By</th>
                                                     <th class="text-center" style="width: 50px;">Action</th>
                                                     <th>Description</th>
                                                     <th style="width: 100px;">Date</th>
@@ -80,14 +81,17 @@ include '../server/admin_login-verification.php';
                                     </div>
 
                                     <div class="card-body">
-                                        <table id="createUpdateDeleteTable_systemLogs" class="table responsive table-hover">
+                                        <table id="createUpdateDeleteTable_systemLogs"
+                                            class="table responsive table-hover">
                                             <thead class="thead-light">
                                                 <tr>
-                                                    <th style="width: 100px;">Logs ID</th>
-                                                    <th class="text-nowrap" style="width: 200px;">Performed By</th>
-                                                    <th style="width: 100px;">Action</th>
+                                                    <th class="text-center text-nowrap" style="width: 50px;">Logs ID
+                                                    </th>
+                                                    <th class="text-center text-nowrap" style="width: 100px;">Performed
+                                                        By</th>
+                                                    <th class="text-center" style="width: 50px;">Action</th>
                                                     <th>Description</th>
-                                                    <th style="width: 200px;">Date</th>
+                                                    <th style="width: 100px;">Date</th>
                                                 </tr>
                                             </thead>
 
@@ -124,7 +128,7 @@ include '../server/admin_login-verification.php';
                             dt.columns().search('')    // Clear individual column search
                             dt.order([[0, 'asc']])     // Reset sorting to the first column (adjust as needed)
                             dt.page('first')           // Reset pagination to the first page
-                            dt .draw(false);
+                            dt.draw(false);
                             $('#logInLogOutTable_systemLogs').DataTable().ajax.reload(function () { // Reload DataTable
                                 $('#logInLogOutTable_reloadOverlay').hide();
                                 toastr.info("Table has been reloaded", "", {
@@ -148,12 +152,12 @@ include '../server/admin_login-verification.php';
                             {
                                 text: 'Login',
                                 action: function (e, dt, node, config) {
-                                    dt.column(2).search('Login').draw();
+                                    dt.column(2).search('login').draw();
                                 }
                             }, {
                                 text: 'Logout',
                                 action: function (e, dt, node, config) {
-                                    dt.column(2).search('Logout').draw();
+                                    dt.column(2).search('logout').draw();
                                 }
                             }, {
                                 text: 'Clear Filter',
@@ -203,7 +207,6 @@ include '../server/admin_login-verification.php';
                     }]
                 });
 
-            
                 $('#createUpdateDeleteTable_systemLogs').DataTable({
                     buttons: [{
                         text: '<i class="fa-solid fa-rotate-right"></i>',
@@ -214,7 +217,7 @@ include '../server/admin_login-verification.php';
                             dt.columns().search('')    // Clear individual column search
                             dt.order([[0, 'asc']])     // Reset sorting to the first column (adjust as needed)
                             dt.page('first')           // Reset pagination to the first page
-                            dt .draw(false);
+                            dt.draw(false);
                             $('#createUpdateDeleteTable_systemLogs').DataTable().ajax.reload(function () { // Reload DataTable
                                 $('#createUpdateDelete_reloadOverlay').hide();
                                 toastr.info("Table has been reloaded", "", {
@@ -236,14 +239,19 @@ include '../server/admin_login-verification.php';
                         autoClose: true,
                         buttons: [
                             {
-                                text: 'Login',
+                                text: 'Create',
                                 action: function (e, dt, node, config) {
-                                    dt.column(2).search('Login').draw();
+                                    dt.column(2).search('create').draw();
                                 }
                             }, {
-                                text: 'Logout',
+                                text: 'Update',
                                 action: function (e, dt, node, config) {
-                                    dt.column(2).search('Logout').draw();
+                                    dt.column(2).search('update').draw();
+                                }
+                            }, {
+                                text: 'Delete',
+                                action: function (e, dt, node, config) {
+                                    dt.column(2).search('delete').draw();
                                 }
                             }, {
                                 text: 'Clear Filter',

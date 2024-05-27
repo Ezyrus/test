@@ -38,6 +38,11 @@ if ($selectAdminQuery = $db->prepare("SELECT * FROM `system_admins` WHERE `usern
       if ($insertAdminQuery->execute()) {
         $response['status'] = true;
         $response['message'] = "Admin Added";
+        $response['logsData'] = array(
+          "admin_id" => $_SESSION["adminLogged"]["admin_id"],
+          "action" => "create",
+          "description" => $_SESSION["adminLogged"]["username"] . " created admin " . $createUsername_systemAdmin . " in Admin Table."
+      );
       } else {
         $response['message'] = 'An error occurred while executing Query: ' . $insertAdminQuery->error;
         http_response_code(500); // Server Error

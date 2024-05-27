@@ -1,5 +1,6 @@
-<?php 
+<?php
 include '../config/config.php';
+session_start();
 
 $response = array(
     "status" => false,
@@ -17,12 +18,17 @@ $updateType_systemAdmin = $_POST["updateType_systemAdmin"];
 $updateSystemAccess_systemAdmin = $_POST["updateSystemAccess_systemAdmin"];
 
 if (!empty($updatePictureName_systemAdmin)) {
-    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET `picture` = ?, `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
+    if ($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET `picture` = ?, `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
         $updateAdminQuery->bind_param("ssssi", $updatePictureName_systemAdmin, $updateFullName_systemAdmin, $updateType_systemAdmin, $updateSystemAccess_systemAdmin, $updateId_systemAdmin);
-    
+
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
             $response["message"] = "Admin Updated";
+            $response['logsData'] = array(
+                "admin_id" => $_SESSION["adminLogged"]["admin_id"],
+                "action" => "update",
+                "description" => $_SESSION["adminLogged"]["username"] . " update admin ADMIN" . $updateId_systemAdmin . " in Admin Table."
+            );
         } else {
             $response["message"] = 'An error occurred while executing Query: ' . $updateAdminQuery->error;
             http_response_code(500); // Server Error
@@ -33,9 +39,9 @@ if (!empty($updatePictureName_systemAdmin)) {
         http_response_code(500); // Server Error
     }
 } else {
-    if($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET  `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
+    if ($updateAdminQuery = $db->prepare("UPDATE `system_admins` SET  `fullname` = ?, `type` = ?, `system_access` = ? WHERE `admin_id` = ? ")) {
         $updateAdminQuery->bind_param("sssi", $updateFullName_systemAdmin, $updateType_systemAdmin, $updateSystemAccess_systemAdmin, $updateId_systemAdmin);
-    
+
         if ($updateAdminQuery->execute()) {
             $response["status"] = true;
             $response["message"] = "Admin Updated";
