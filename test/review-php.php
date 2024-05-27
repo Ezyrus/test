@@ -122,21 +122,14 @@
 //     echo $i . ' ';
 // }
 
-function groupByOwners(array $files): array
-{
-    $result = array();
-    foreach ($files as $file => $owner) {
-        $result[$owner][] = $file;
+class calculator {
+
+    function __construct() {
+
     }
-    return $result;
+    
+    function __destruct() {
+
+    }
 }
-
-$files = array(
-    "Input.txt" => "Randy",
-    "Code.py" => "Stan",
-    "Output.txt" => "Randy"
-);
-
-var_dump(groupByOwners($files));
-
 ?>
