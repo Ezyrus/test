@@ -5,9 +5,9 @@ function getDatabase() {
     $dbUsername = 'root';
     $dbPassword = '';
     $dbName = 'test-projectdb';
-    $connection = mysqli_connect($dbHost, $dbUsername, $dbPassword, $dbName);
-    if (!$connection) {
-        die("Can't connect to the database server. Error: " . mysqli_connect_error());
+    $connection = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName); // OOP Approach same with bind_param()
+    if ($connection->connect_error) {
+        die("Can't connect to the database server. Error: " . $connection->connect_error);
     }
     return $connection;
 }
