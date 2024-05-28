@@ -5,6 +5,11 @@
 // count($array) = Counting the length of array
 // define("constVar", "This is a Constant variable.");
 
+// Access Modifiers:
+// Public = Everyone can access the methods & and properties 
+// Private = Only inside the class can access the methods & properties
+// Protected = Only inside the class and the class that inherits it can access the methods & properties
+
 // Arithmetic Operators:
 // Addition (+)
 // Subtraction (-)
@@ -122,14 +127,66 @@
 //     echo $i . ' ';
 // }
 
-class calculator {
+// Others:
+// $string = "qwerpotiopzuxcn,bmasz;lcvbopqw[perof";
+// $vowels = array("a", "e", "o", "i", "u");
+// $vowelsCount = 0;
+// for ($i = 0; $i < strlen($string); $i++) {
+//     foreach ($vowels as $value) {
+//         if ($string[$i] == $value) {
+//             $vowelsCount++;
+//         } 
+//     }
+// }
+// echo "Vowels Count: " . $vowelsCount;
 
-    function __construct() {
+// class Person {
+//     private $name;
+//     private $course;
+//     private $age;
 
-    }
-    
-    function __destruct() {
+//     public function __construct($name, $course, $age) {
+//         $this->name = $name;
+//         $this->course = $course;
+//         $this->age = $age;
+//     }
 
-    }
-}
-?>
+//     public function setName($name) {
+//         $this->name = $name;
+//     }
+
+//     public function getName() {
+//         return $this->name;
+//     }
+
+// }
+// $person = new Person("Cyrus Cantero", "BS Information System", 21);
+// echo $person->getName();
+
+// $person = array (
+//     "Cyrus" => 21,
+//     "Paolo" => 22,
+//     "Bai" => 22,
+//     "Christian" => 30,
+//     "Jose" => 50,
+//     "Juan" => 50
+// );
+// foreach ($person as $key => $value) {
+//     for ($i = 0; $i < count($value); $i++) {
+//         echo "$key => $value[$i] \n";
+//     }
+// }
+// print_r($person);
+
+
+// $numbers = array(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+// $evenNumbers = array();
+// $oddNumbers = array();
+// foreach ($numbers as $value) {
+//     if ($value % 2 === 0) {
+//         array_push($evenNumbers, $value);
+//     } else {
+//         array_push($oddNumbers, $value);
+//     }
+// }
+// print_r($evenNumbers);
