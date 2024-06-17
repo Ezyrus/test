@@ -140,29 +140,6 @@
 // }
 // echo "Vowels Count: " . $vowelsCount;
 
-// class Person {
-//     private $name;
-//     private $course;
-//     private $age;
-
-//     public function __construct($name, $course, $age) {
-//         $this->name = $name;
-//         $this->course = $course;
-//         $this->age = $age;
-//     }
-
-//     public function setName($name) {
-//         $this->name = $name;
-//     }
-
-//     public function getName() {
-//         return $this->name;
-//     }
-
-// }
-// $person = new Person("Cyrus Cantero", "BS Information System", 21);
-// echo $person->getName();
-
 // $person = array (
 //     "Cyrus" => 21,
 //     "Paolo" => 22,
@@ -190,3 +167,44 @@
 //     }
 // }
 // print_r($evenNumbers);
+
+class Person {
+    private $name;
+    private $age;
+
+    public function __construct($name, $age) {
+        $this->name = $name;
+        $this->age = $age;
+    }
+
+    public function setName($name) {
+        $this->name = $name;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+}
+
+class Course extends Person {  
+    private $course;
+
+    public function __construct($course) {
+        $this->course = $course;
+    }
+
+    public function setCourse($course) {
+        $this->course = $course;
+    }
+
+    public function getCourse() {
+        return $this->course;
+    }
+}
+
+// $person = new Person("Cyrus Cantero", 21);
+// echo $person->setName("New Name");
+$course = new Course("BSIS");
+$course->setCourse("BSIT");
+echo $course->getCourse();
