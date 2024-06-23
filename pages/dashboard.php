@@ -189,7 +189,7 @@ include '../server/admin_login-verification.php';
                                             </button>
                                         </div>
                                     </div>
-                         
+
                                     <div class="card-body p-0">
                                         <div class="table-responsive">
                                             <table class="table m-0">
@@ -398,7 +398,7 @@ include '../server/admin_login-verification.php';
                             </div>
                             <!-- /.col -->
                         </div>
-             
+
                     </div>
                 </section>
             </div>
@@ -406,6 +406,27 @@ include '../server/admin_login-verification.php';
         </div>
 
         <?php include 'includes/admin_footer.php' ?>
+
+        <script>
+            function updateDateTime() {
+                var now = new Date();
+                var year = now.getFullYear();
+                var month = String(now.getMonth() + 1).padStart(2, '0');
+                var date = String(now.getDate()).padStart(2, '0');
+                var hours = String(now.getHours()).padStart(2, '0');
+                var minutes = String(now.getMinutes()).padStart(2, '0');
+                var seconds = String(now.getSeconds()).padStart(2, '0');
+
+                var formattedDateTime = year + '-' + month + '-' + date + ' ' + hours + ':' + minutes + ':' + seconds;
+                $('#currentTime').text(formattedDateTime);
+            }
+
+            $(document).ready(function () {
+                updateDateTime();
+                setInterval(updateDateTime, 1000); 
+            });
+
+        </script>
         </div>
     </body>
 

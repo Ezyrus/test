@@ -11,6 +11,9 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="../index.php" class="nav-link">Visit Landing Page</a>
         </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Time: <span id="currentTime"></span></a>
+        </li>
     </ul>
 
     <!-- Right links -->
